@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Karmeda · PT Karuna Metta Ananda — Konveksi Seragam Profesional</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="PT Karuna Metta Ananda (KARMEDA) - Konveksi seragam profesional untuk perusahaan, sekolah, dan organisasi. Kualitas terbaik, harga kompetitif, kapasitas 700 pcs/minggu."/>
+  <meta name="keywords" content="konveksi seragam, seragam kantor, seragam perusahaan, seragam kerja, seragam karyawan, konveksi jakarta, konveksi tangerang"/>
+  <meta name="author" content="PT Karuna Metta Ananda"/>
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Karmeda - Konveksi Seragam Profesional"/>
+  <meta property="og:description" content="Konveksi seragam berkualitas untuk perusahaan dan organisasi"/>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css"/>
+  
+  <style>
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Responsive */
+    .promo-grid { /* responsive */ }
+    @media (max-width: 768px) {
+      .promo-grid { grid-template-columns: 1fr !important; padding: 28px !important; }
+      .calc-notes { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 1024px) {
+      .hero-split-grid, .about-grid, .calc-grid, .contact-grid, .measure-grid, .hero-cat-top {
+        grid-template-columns: 1fr !important;
+        gap: 48px !important;
+      }
+      .size-finder-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .products-grid, .blog-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .case-grid { grid-template-columns: 1fr !important; }
+      .process-grid { grid-template-columns: 1fr !important; }
+      .client-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      .nav-links { display: none !important; }
+      .testimonial { grid-template-columns: 1fr !important; }
+      .hero-cat-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 640px) {
+      .products-grid, .blog-grid { grid-template-columns: 1fr !important; }
+      .client-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .size-finder-results { grid-template-columns: 1fr !important; }
+      :root { --gutter: 20px; }
+      .section { padding: 64px 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- React Production Build - Faster & Smaller -->
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+
+  <!-- Components -->
+  <script type="text/babel" src="components/i18n.jsx"></script>
+  <script type="text/babel" src="components/nav.jsx"></script>
+  <script type="text/babel" src="components/hero.jsx"></script>
+  <script type="text/babel" src="components/about.jsx"></script>
+  <script type="text/babel" src="components/products.jsx"></script>
+  <script type="text/babel" src="components/process.jsx"></script>
+  <script type="text/babel" src="components/calculator.jsx"></script>
+  <script type="text/babel" src="components/blog_faq.jsx"></script>
+  <script type="text/babel" src="components/contact.jsx"></script>
+  <script type="text/babel" src="components/app.jsx"></script>
+</body>
+</html>
