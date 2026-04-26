@@ -91,8 +91,8 @@ Buka browser: `http://localhost:8000`
 ## 📞 Kontak
 
 **PT Karuna Metta Ananda (KARMEDA)**  
-Email: info@karmeda.id  
-WhatsApp: 0812-xxxx-xxxx (update dengan nomor yang benar)
+Email: 
+WhatsApp: 628170012500
 
 ---
 
