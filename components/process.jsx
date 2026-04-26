@@ -89,7 +89,8 @@ const portfolioStyles = {
 };
 
 const CLIENTS = [
-'Adira Finance', 'Astra Group', 'Bank Mandiri', 'BPJS', 'Pertamina', 'PLN',
+{ label: 'Orang Tua Group', logo: 'assets/Logo-Orang-Tua.png' },
+'Astra Group', 'Bank Mandiri', 'BPJS', 'Pertamina', 'PLN',
 'RS Premier', 'SMA Tarakanita', 'Universitas Pelita', 'Telkom', 'Indofood', 'Garuda'];
 
 const CASES = [
@@ -108,7 +109,11 @@ function Portfolio({ t, lang }) {
         </div>
         <div style={portfolioStyles.clientGrid} className="client-grid">
           {CLIENTS.map((c, i) =>
-          <div key={i} style={portfolioStyles.clientCell}>{c}</div>
+          <div key={i} style={portfolioStyles.clientCell}>
+            {typeof c === 'object' && c.logo
+              ? <img src={c.logo} alt={c.label} style={{ maxHeight: 36, maxWidth: 120, objectFit: 'contain' }} />
+              : c}
+          </div>
           )}
         </div>
         <div style={portfolioStyles.caseGrid} className="case-grid">
