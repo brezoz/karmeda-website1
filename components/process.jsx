@@ -111,7 +111,7 @@ function Portfolio({ t, lang }) {
           {CLIENTS.map((c, i) =>
           <div key={i} style={portfolioStyles.clientCell}>
             {typeof c === 'object' && c.logo
-              ? <img src={c.logo} alt={c.label} style={{ maxHeight: 36, maxWidth: 120, objectFit: 'contain' }} />
+              ? <img src={c.logo} alt={c.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               : c}
           </div>
           )}
