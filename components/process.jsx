@@ -62,12 +62,15 @@ const portfolioStyles = {
   },
   clientCell: {
     background: 'white',
-    aspectRatio: '3/2',
-    display: 'grid',
-    placeItems: 'center',
-    color: 'var(--ink-500)',
-    fontFamily: 'var(--font-display)',
-    fontSize: 18,
+    width: '100%',
+    height: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 16,
+    boxSizing: 'border-box',
+    border: '1px solid var(--ink-100)',
+    borderRadius: 8,
     transition: 'all 0.2s'
   },
   caseGrid: { display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr', gap: 20, marginTop: 80 },
@@ -91,15 +94,15 @@ const portfolioStyles = {
 const CLIENTS = [
 { label: 'Orang Tua Group', logo: 'assets/Logo-Orang-Tua.png' },
 { label: 'Astra Group', logo: 'assets/images.png' },
-{ label: 'Bank Mandiri', logo: 'assets/images (1).jpeg' },
+{ label: 'Bank Mandiri', logo: 'assets/bank-mandiri.png' },
 { label: 'BPJS', logo: 'assets/Logo-Adaro-Andalan-Indonesia-Color.png' },
-{ label: 'Pertamina', logo: 'assets/pt_aplus_pacific_logo.jpeg' },
-{ label: 'PLN', logo: 'assets/Andhana-Kirana-Yasa-16Feb.webp' },
+{ label: 'Pertamina', logo: 'assets/pt_aplus_pacific_logo.png' },
+{ label: 'PLN', logo: 'assets/Andhana-Kirana-Yasa-16Feb.png' },
 { label: 'RS Premier', logo: 'assets/images (2).png' },
-{ label: 'SMA Tarakanita', logo: 'assets/unnamed.jpg' },
-{ label: 'Universitas Pelita', logo: 'assets/olamindonesia_logo.jpeg' },
+{ label: 'SMA Tarakanita', logo: 'assets/unnamed.png' },
+{ label: 'Universitas Pelita', logo: 'assets/olamindonesia_logo.png' },
 { label: 'Telkom', logo: 'assets/images (1).png' },
-{ label: 'Indofood', logo: 'assets/LOGO+FORMULA.webp' },
+{ label: 'Indofood', logo: 'assets/LOGO+FORMULA.png' },
 { label: 'Garuda', logo: 'assets/Logo_Wafer_Tango.png' }];
 
 const CASES = [
@@ -120,7 +123,7 @@ function Portfolio({ t, lang }) {
           {CLIENTS.map((c, i) =>
           <div key={i} style={portfolioStyles.clientCell}>
             {typeof c === 'object' && c.logo
-              ? <img src={c.logo} alt={c.label} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              ? <img src={c.logo} alt={c.label} style={{ maxWidth: '100%', maxHeight: 88, objectFit: 'contain', display: 'block' }} />
               : c}
           </div>
           )}
