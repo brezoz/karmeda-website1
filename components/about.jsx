@@ -41,6 +41,7 @@ const aboutStyles = {
   badge: {
     position: 'absolute',
     top: 24, left: 24,
+    zIndex: 10,
     background: 'white',
     padding: '12px 16px',
     borderRadius: 999,
