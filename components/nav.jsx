@@ -54,7 +54,7 @@ function Nav({ lang, setLang, t }) {
     <div className={`nav-wrap ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav">
         <a href="#home" className="brand">
-          <div className="brand-mark"><Logo size={22}/></div>
+          <img src="assets/logo-karmeda.png" alt="Karmeda" style={{ height: 36, width: 36, objectFit: 'contain', borderRadius: 8 }} />
           <div>
             <div className="brand-name">Karmeda</div>
             <div className="brand-sub">PT Karuna Metta Ananda</div>
