@@ -63,11 +63,11 @@ const portfolioStyles = {
   clientCell: {
     background: 'white',
     width: '100%',
-    height: 120,
+    height: 160,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 16,
+    padding: 12,
     boxSizing: 'border-box',
     border: '1px solid var(--ink-100)',
     borderRadius: 8,
@@ -123,7 +123,7 @@ function Portfolio({ t, lang }) {
           {CLIENTS.map((c, i) =>
           <div key={i} style={portfolioStyles.clientCell}>
             {typeof c === 'object' && c.logo
-              ? <img src={c.logo} alt={c.label} style={{ maxWidth: '100%', maxHeight: 88, objectFit: 'contain', display: 'block' }} />
+              ? <img src={c.logo} alt={c.label} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} />
               : c}
           </div>
           )}
