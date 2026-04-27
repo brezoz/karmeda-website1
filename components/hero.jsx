@@ -180,31 +180,85 @@ function HeroStats({ t, dark }) {
 
 // Marquee
 function Marquee({ t }) {
+  const trackRef = React.useRef(null);
+  const isDragging = React.useRef(false);
+  const startX = React.useRef(0);
+  const scrollLeft = React.useRef(0);
+  const animPaused = React.useRef(false);
+
+  function pauseAnim() {
+    if (trackRef.current && !animPaused.current) {
+      trackRef.current.style.animationPlayState = 'paused';
+      animPaused.current = true;
+    }
+  }
+  function resumeAnim() {
+    if (trackRef.current) {
+      trackRef.current.style.animationPlayState = 'running';
+      animPaused.current = false;
+    }
+  }
+
+  function onPointerDown(e) {
+    isDragging.current = true;
+    startX.current = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    scrollLeft.current = trackRef.current.parentElement.scrollLeft;
+    pauseAnim();
+    e.currentTarget.setPointerCapture && e.currentTarget.setPointerCapture(e.pointerId);
+  }
+  function onPointerMove(e) {
+    if (!isDragging.current) return;
+    const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+    const diff = startX.current - x;
+    trackRef.current.parentElement.scrollLeft = scrollLeft.current + diff;
+  }
+  function onPointerUp() {
+    isDragging.current = false;
+    resumeAnim();
+  }
+
+  const items = t('marquee').split(' · ');
+
   return (
-    <div style={{
-      background: 'var(--ink-900)',
-      color: 'var(--paper)',
-      padding: '20px 0',
-      overflow: 'hidden',
-      borderTop: '1px solid var(--ink-700)',
-      borderBottom: '1px solid var(--ink-700)',
-    }}>
-      <div style={{
-        display: 'flex',
-        whiteSpace: 'nowrap',
-        animation: 'scroll-left 40s linear infinite',
-        gap: 64,
-      }}>
+    <div
+      style={{
+        background: 'var(--ink-900)',
+        color: 'var(--paper)',
+        padding: '20px 0',
+        overflowX: 'scroll',
+        overflowY: 'hidden',
+        borderTop: '1px solid var(--ink-700)',
+        borderBottom: '1px solid var(--ink-700)',
+        cursor: 'grab',
+        userSelect: 'none',
+        scrollbarWidth: 'none',
+        msOverflowStyle: 'none',
+      }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerLeave={onPointerUp}
+    >
+      <style>{`.marquee-track::-webkit-scrollbar { display: none; }`}</style>
+      <div
+        ref={trackRef}
+        className="marquee-track"
+        style={{
+          display: 'flex',
+          whiteSpace: 'nowrap',
+          animation: 'scroll-left 40s linear infinite',
+          gap: 64,
+        }}
+      >
         {[...Array(4)].map((_, i) => (
-          <div key={i} style={{
-            display: 'flex', gap: 64,
-            fontFamily: 'var(--font-mono)',
-            fontSize: 13,
-            letterSpacing: '0.1em',
-            color: 'var(--green-200)',
-          }}>
-            {t('marquee').split(' · ').map((w, j) => (
-              <span key={j}>{w}<span style={{color:'var(--ink-500)', marginLeft: 64}}>◆</span></span>
+          <div key={i} style={{ display: 'flex', gap: 64, fontFamily: 'var(--font-mono)', fontSize: 13, letterSpacing: '0.1em', color: 'var(--green-200)' }}>
+            {items.map((w, j) => (
+              <a key={j} href="#products" style={{ color: 'var(--green-200)', textDecoration: 'none', transition: 'color 0.15s' }}
+                onMouseEnter={e => e.target.style.color = 'var(--green-400)'}
+                onMouseLeave={e => e.target.style.color = 'var(--green-200)'}
+              >
+                {w}<span style={{ color: 'var(--ink-500)', marginLeft: 64 }}>◆</span>
+              </a>
             ))}
           </div>
         ))}
