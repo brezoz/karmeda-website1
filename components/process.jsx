@@ -90,8 +90,17 @@ const portfolioStyles = {
 
 const CLIENTS = [
 { label: 'Orang Tua Group', logo: 'assets/Logo-Orang-Tua.png' },
-'Astra Group', 'Bank Mandiri', 'BPJS', 'Pertamina', 'PLN',
-'RS Premier', 'SMA Tarakanita', 'Universitas Pelita', 'Telkom', 'Indofood', 'Garuda'];
+{ label: 'Astra Group', logo: 'assets/images.png' },
+{ label: 'Bank Mandiri', logo: 'assets/images (1).jpeg' },
+{ label: 'BPJS', logo: 'assets/Logo-Adaro-Andalan-Indonesia-Color.png' },
+{ label: 'Pertamina', logo: 'assets/pt_aplus_pacific_logo.jpeg' },
+{ label: 'PLN', logo: 'assets/Andhana-Kirana-Yasa-16Feb.webp' },
+{ label: 'RS Premier', logo: 'assets/images (2).png' },
+{ label: 'SMA Tarakanita', logo: 'assets/unnamed.jpg' },
+{ label: 'Universitas Pelita', logo: 'assets/olamindonesia_logo.jpeg' },
+{ label: 'Telkom', logo: 'assets/images (1).png' },
+{ label: 'Indofood', logo: 'assets/LOGO+FORMULA.webp' },
+{ label: 'Garuda', logo: 'assets/Logo_Wafer_Tango.png' }];
 
 const CASES = [
 { client: 'Bank Mandiri Cabang Tangerang', n: '320 pcs', what: 'PDH + Polo · Bordir custom logo divisi', tag: 'Korporat', tone: 'green' },
