@@ -60,10 +60,7 @@ function HeroSplit({ t }) {
             </div>
             <HeroStats t={t} />
           </div>
-          <div className="ph green" style={heroStyles.splitMedia}>
-            HERO PHOTO · TEAM IN UNIFORMS
-            <div className="ph-label">replace · 1200×1500</div>
-          </div>
+          <img src="assets/hero-photo.jpeg" alt="Tim Karmeda" style={{ ...heroStyles.splitMedia, width: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
       </div>
     </section>
