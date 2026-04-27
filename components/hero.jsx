@@ -141,7 +141,7 @@ function HeroCatalog({ t }) {
 
 function HeroStats({ t, dark }) {
   const stats = [
-    { n: '25+', l: t('stat_years') },
+    { n: '20+', l: t('stat_years') },
     { n: '50', l: t('stat_employees') },
     { n: '200+', l: t('stat_clients') },
     { n: '15K', l: t('stat_pieces') },

@@ -14,7 +14,7 @@ const I18N = {
     hero_title_a: 'Seragam yang',
     hero_title_b: 'membentuk',
     hero_title_c: 'identitas',
-    hero_sub: 'Karmeda mengerjakan seragam korporat, sekolah, medis, hingga workwear pabrik dengan presisi konfeksi 25 tahun pengalaman.',
+    hero_sub: 'Karmeda mengerjakan seragam korporat, sekolah, medis, hingga workwear pabrik dengan presisi konfeksi 20 tahun pengalaman.',
     hero_cta_primary: 'Mulai konsultasi',
     hero_cta_secondary: 'Lihat katalog',
 
@@ -120,7 +120,7 @@ const I18N = {
     hero_title_a: 'Uniforms that',
     hero_title_b: 'shape',
     hero_title_c: 'identity',
-    hero_sub: 'Karmeda crafts corporate, school, medical, and industrial workwear with the precision of 25 years of confectionery experience.',
+    hero_sub: 'Karmeda crafts corporate, school, medical, and industrial workwear with the precision of 20 years of confectionery experience.',
     hero_cta_primary: 'Start consultation',
     hero_cta_secondary: 'View catalog',
 
