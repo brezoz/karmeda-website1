@@ -37,7 +37,7 @@ const PRODUCTS = [
   { cat: 'industrial', name: 'Safety Vest', en: 'Safety Vest', desc: 'Reflective tape EN471', en_desc: 'EN471 reflective tape', price: '85–140rb', moq: 'MOQ 100', tone: 'green' },
   { cat: 'medical', name: 'Baju Kantor RS', en: 'Hospital Office Wear', desc: 'Seragam staf administrasi rumah sakit, formal & nyaman', en_desc: 'Hospital admin staff uniform, formal & comfortable', price: '160–260rb', moq: 'MOQ 30' },
   { cat: 'medical', name: 'Baju Dokter & Perawat', en: 'Doctor & Nurse Scrub', desc: 'Scrub suit anti-bacterial, breathable, tahan cuci tinggi', en_desc: 'Anti-bacterial scrub suit, breathable, high-wash resistant', price: '150–240rb', moq: 'MOQ 30', tone: 'green' },
-  { cat: 'medical', name: 'Baju Spesial — Lab Coat', en: 'Special — Lab Coat', desc: 'Lab coat polyester-cotton, button down, saku ganda', en_desc: 'Polyester-cotton lab coat, button down, dual pocket', price: '180–280rb', moq: 'MOQ 30', tone: 'dark' },
+  { cat: 'medical', name: 'Baju Spesial — Lab Coat', en: 'Special — Lab Coat', desc: 'Lab coat polyester-cotton, button down, saku ganda', en_desc: 'Polyester-cotton lab coat, button down, dual pocket', price: '180–280rb', moq: 'MOQ 30', tone: 'dark', images: ['assets/baju-lab1.webp','assets/baju-lab2.webp','assets/baju-lab3.webp','assets/baju-lab4.webp'] },
   { cat: 'fnb', name: 'Baju Pelayan', en: 'Server / Waiter Uniform', desc: 'Seragam pelayan restoran & hospitality, rapi & tahan cuci', en_desc: 'Restaurant & hospitality server uniform, neat & wash-resistant', price: '140–220rb', moq: 'MOQ 30' },
   { cat: 'fnb', name: 'Baju Chef', en: 'Chef Jacket', desc: 'Double-breasted, heat-resistant, katun berat premium', en_desc: 'Double-breasted, heat-resistant, premium heavy cotton', price: '220–340rb', moq: 'MOQ 20', tone: 'green' },
   { cat: 'fnb', name: 'Baju Asst. Chef', en: 'Asst. Chef Jacket', desc: 'Single-breasted untuk commis & line cook, ringan', en_desc: 'Single-breasted for commis & line cook, lightweight', price: '180–280rb', moq: 'MOQ 20', tone: 'dark' },
@@ -64,6 +64,59 @@ const CATEGORIES_EN = [
   { id: 'fnb', label: 'F&B & Hospitality' },
   { id: 'outsourcing', label: 'Outsourcing' },
 ];
+
+function ProductSlider({ images, style }) {
+  const [cur, setCur] = React.useState(0);
+  const total = images.length;
+
+  React.useEffect(() => {
+    const t = setInterval(() => setCur(c => (c + 1) % total), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const touchStart = React.useRef(null);
+  function onTouchStart(e) { touchStart.current = e.touches[0].clientX; }
+  function onTouchEnd(e) {
+    if (touchStart.current === null) return;
+    const diff = touchStart.current - e.changedTouches[0].clientX;
+    if (diff > 30) setCur(c => (c + 1) % total);
+    else if (diff < -30) setCur(c => (c - 1 + total) % total);
+    touchStart.current = null;
+  }
+
+  return (
+    <div style={{ ...style, position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
+      onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}
+      onClick={() => setCur(c => (c + 1) % total)}
+    >
+      {images.map((src, i) => (
+        <img key={i} src={src} alt={`foto ${i+1}`} style={{
+          position: 'absolute', inset: 0,
+          width: '100%', height: '100%',
+          objectFit: 'cover',
+          opacity: i === cur ? 1 : 0,
+          transition: 'opacity 0.4s ease',
+        }} />
+      ))}
+      {/* dot indicators */}
+      <div style={{ position: 'absolute', bottom: 8, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 5, zIndex: 2 }}>
+        {images.map((_, i) => (
+          <div key={i} onClick={e => { e.stopPropagation(); setCur(i); }} style={{
+            width: i === cur ? 16 : 6, height: 6,
+            borderRadius: 999,
+            background: i === cur ? 'white' : 'rgba(255,255,255,0.5)',
+            transition: 'all 0.3s',
+            cursor: 'pointer',
+          }} />
+        ))}
+      </div>
+      {/* counter */}
+      <div style={{ position: 'absolute', top: 8, right: 10, zIndex: 2, background: 'rgba(0,0,0,0.45)', color: 'white', fontSize: 10, fontFamily: 'var(--font-mono)', padding: '2px 7px', borderRadius: 999 }}>
+        {cur + 1}/{total}
+      </div>
+    </div>
+  );
+}
 
 function Products({ t, lang }) {
   const [cat, setCat] = React.useState('all');
@@ -94,9 +147,10 @@ function Products({ t, lang }) {
         <div style={productStyles.grid} className="products-grid">
           {shown.map((p, i) => (
             <div key={i} className="card" style={productStyles.pCard}>
-              <div className={`ph ${p.tone || ''}`} style={productStyles.pImg}>
-                {(lang === 'id' ? p.name : p.en).toUpperCase()}
-              </div>
+              {p.images
+                ? <ProductSlider images={p.images} style={productStyles.pImg} />
+                : <div className={`ph ${p.tone || ''}`} style={productStyles.pImg}>{(lang === 'id' ? p.name : p.en).toUpperCase()}</div>
+              }
               <div style={productStyles.pBody}>
                 <div style={productStyles.pName}>{lang === 'id' ? p.name : p.en}</div>
                 <div style={{fontSize: 14, color: 'var(--ink-500)'}}>{lang === 'id' ? p.desc : p.en_desc}</div>
