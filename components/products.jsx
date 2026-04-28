@@ -70,7 +70,7 @@ function ProductSlider({ images, style }) {
   const total = images.length;
 
   React.useEffect(() => {
-    const t = setInterval(() => setCur(c => (c + 1) % total), 1000);
+    const t = setInterval(() => setCur(c => (c + 1) % total), 2500);
     return () => clearInterval(t);
   }, []);
 
