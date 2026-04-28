@@ -36,8 +36,8 @@ const PRODUCTS = [
   { cat: 'industrial', name: 'Wearpack Standard', en: 'Standard Coverall', desc: 'Drill 100% cotton, double stitched', en_desc: 'Drill 100% cotton, double stitched', price: '280–420rb', moq: 'MOQ 30', tone: 'dark' },
   { cat: 'industrial', name: 'Safety Vest', en: 'Safety Vest', desc: 'Reflective tape EN471', en_desc: 'EN471 reflective tape', price: '85–140rb', moq: 'MOQ 100', tone: 'green' },
   { cat: 'medical', name: 'Baju Kantor RS', en: 'Hospital Office Wear', desc: 'Seragam staf administrasi rumah sakit, formal & nyaman', en_desc: 'Hospital admin staff uniform, formal & comfortable', price: '160–260rb', moq: 'MOQ 30' },
-  { cat: 'medical', name: 'Baju Perawat', en: 'Doctor & Nurse Scrub', desc: 'Scrub suit anti-bacterial, breathable, tahan cuci tinggi', en_desc: 'Anti-bacterial scrub suit, breathable, high-wash resistant', price: '150–240rb', moq: 'MOQ 30', tone: 'green', images: ['assets/perawat1.webp','assets/perawat2.webp','assets/celana-perawat2.webp','assets/celana-perawat1.webp','assets/perawat3.webp','assets/perawat4.webp'] },
-  { cat: 'medical', name: 'Baju Dokter & Lab', en: 'Special — Lab Coat', desc: 'Lab coat polyester-cotton, button down, saku ganda', en_desc: 'Polyester-cotton lab coat, button down, dual pocket', price: '180–280rb', moq: 'MOQ 30', tone: 'dark', images: ['assets/baju-lab1.webp','assets/baju-lab2.webp','assets/baju-lab3.webp','assets/baju-lab4.webp'] },
+  { cat: 'medical', name: 'Baju Perawat', en: 'Doctor & Nurse Scrub', desc: 'Scrub suit anti-bacterial, breathable, tahan cuci tinggi', en_desc: 'Anti-bacterial scrub suit, breathable, high-wash resistant', price: '150–240rb', moq: 'MOQ 30', tone: 'green', images: ['assets/perawat1.webp','assets/perawat2.webp','assets/celana-perawat2.webp','assets/celana-perawat1.webp','assets/perawat3.webp','assets/perawat4.webp'], interval: 3800 },
+  { cat: 'medical', name: 'Baju Dokter & Lab', en: 'Special — Lab Coat', desc: 'Lab coat polyester-cotton, button down, saku ganda', en_desc: 'Polyester-cotton lab coat, button down, dual pocket', price: '180–280rb', moq: 'MOQ 30', tone: 'dark', images: ['assets/baju-lab1.webp','assets/baju-lab2.webp','assets/baju-lab3.webp','assets/baju-lab4.webp'], interval: 2500 },
   { cat: 'fnb', name: 'Baju Pelayan', en: 'Server / Waiter Uniform', desc: 'Seragam pelayan restoran & hospitality, rapi & tahan cuci', en_desc: 'Restaurant & hospitality server uniform, neat & wash-resistant', price: '140–220rb', moq: 'MOQ 30' },
   { cat: 'fnb', name: 'Baju Chef', en: 'Chef Jacket', desc: 'Double-breasted, heat-resistant, katun berat premium', en_desc: 'Double-breasted, heat-resistant, premium heavy cotton', price: '220–340rb', moq: 'MOQ 20', tone: 'green' },
   { cat: 'fnb', name: 'Baju Asst. Chef', en: 'Asst. Chef Jacket', desc: 'Single-breasted untuk commis & line cook, ringan', en_desc: 'Single-breasted for commis & line cook, lightweight', price: '180–280rb', moq: 'MOQ 20', tone: 'dark' },
@@ -65,14 +65,15 @@ const CATEGORIES_EN = [
   { id: 'outsourcing', label: 'Outsourcing' },
 ];
 
-function ProductSlider({ images, style }) {
+function ProductSlider({ images, style, interval }) {
   const [cur, setCur] = React.useState(0);
   const total = images.length;
+  const ms = interval || 2500;
 
   React.useEffect(() => {
-    const t = setInterval(() => setCur(c => (c + 1) % total), 2500);
+    const t = setInterval(() => setCur(c => (c + 1) % total), ms);
     return () => clearInterval(t);
-  }, []);
+  }, [ms]);
 
   const touchStart = React.useRef(null);
   function onTouchStart(e) { touchStart.current = e.touches[0].clientX; }
@@ -84,10 +85,21 @@ function ProductSlider({ images, style }) {
     touchStart.current = null;
   }
 
+  const arrowBtn = (dir) => ({
+    position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+    [dir === 'left' ? 'left' : 'right']: 8,
+    zIndex: 3,
+    background: 'rgba(255,255,255,0.88)',
+    border: 'none', borderRadius: '50%',
+    width: 28, height: 28,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    cursor: 'pointer', fontSize: 15, fontWeight: 700, color: 'var(--ink-900)',
+    boxShadow: '0 1px 4px rgba(0,0,0,0.18)',
+  });
+
   return (
-    <div style={{ ...style, position: 'relative', overflow: 'hidden', cursor: 'pointer' }}
+    <div style={{ ...style, position: 'relative', overflow: 'hidden' }}
       onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}
-      onClick={() => setCur(c => (c + 1) % total)}
     >
       {images.map((src, i) => (
         <img key={i} src={src} alt={`foto ${i+1}`} style={{
@@ -98,6 +110,9 @@ function ProductSlider({ images, style }) {
           transition: 'opacity 0.4s ease',
         }} />
       ))}
+      {/* arrows */}
+      <button style={arrowBtn('left')} onClick={e => { e.stopPropagation(); setCur(c => (c - 1 + total) % total); }}>‹</button>
+      <button style={arrowBtn('right')} onClick={e => { e.stopPropagation(); setCur(c => (c + 1) % total); }}>›</button>
       {/* dot indicators */}
       <div style={{ position: 'absolute', bottom: 8, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 5, zIndex: 2 }}>
         {images.map((_, i) => (
@@ -148,7 +163,7 @@ function Products({ t, lang }) {
           {shown.map((p, i) => (
             <div key={i} className="card" style={productStyles.pCard}>
               {p.images
-                ? <ProductSlider images={p.images} style={productStyles.pImg} />
+                ? <ProductSlider images={p.images} style={productStyles.pImg} interval={p.interval} />
                 : <div className={`ph ${p.tone || ''}`} style={productStyles.pImg}>{(lang === 'id' ? p.name : p.en).toUpperCase()}</div>
               }
               <div style={productStyles.pBody}>
