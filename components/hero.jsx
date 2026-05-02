@@ -1,7 +1,7 @@
 // hero.jsx — 3 hero variants toggleable via Tweaks
 const heroStyles = {
   // Variant A: Editorial split
-  splitWrap: { padding: '60px 0 100px' },
+  splitWrap: { padding: '60px 0 100px', overflow: 'hidden' },
   splitGrid: { display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 64, alignItems: 'center' },
   splitTitle: { marginTop: 28, marginBottom: 28 },
   splitItalic: { fontStyle: 'italic', color: 'var(--green-600)' },
@@ -60,7 +60,7 @@ function HeroSplit({ t }) {
             </div>
             <HeroStats t={t} />
           </div>
-          <img src="assets/hero-photo.jpeg" alt="Tim Karmeda" style={{ ...heroStyles.splitMedia, width: '100%', objectFit: 'cover', display: 'block' }} />
+          <img src="assets/hero-photo.jpeg" alt="Tim Karmeda" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
         </div>
       </div>
     </section>
