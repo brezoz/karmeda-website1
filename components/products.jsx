@@ -71,9 +71,19 @@ function ProductSlider({ images, style, interval }) {
   const ms = interval || 2500;
 
   React.useEffect(() => {
+    if (total <= 1) return;
     const t = setInterval(() => setCur(c => (c + 1) % total), ms);
     return () => clearInterval(t);
-  }, [ms]);
+  }, [ms, total]);
+
+  // Single image — render directly, no slider UI
+  if (total === 1) {
+    return (
+      <div style={{ ...style, overflow: 'hidden' }}>
+        <img src={images[0]} alt="foto produk" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      </div>
+    );
+  }
 
   const touchStart = React.useRef(null);
   function onTouchStart(e) { touchStart.current = e.touches[0].clientX; }
