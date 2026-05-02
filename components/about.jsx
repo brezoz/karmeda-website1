@@ -4,27 +4,15 @@ const aboutStyles = {
   grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-start' },
   values: { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24, marginTop: 48 },
   valCard: {
-    position: 'relative',
+    background: 'white',
+    padding: 24,
     borderRadius: 'var(--radius)',
     border: '1px solid var(--ink-200)',
-    overflow: 'hidden',
-    minHeight: 180,
-  },
-  valBg: {
-    position: 'absolute', inset: 0,
-    width: '100%', height: '100%',
-    objectFit: 'cover',
-    filter: 'blur(6px) brightness(0.35)',
-    transform: 'scale(1.08)',
-  },
-  valOverlay: {
-    position: 'relative', zIndex: 1,
-    padding: 24,
   },
   valNum: {
     fontFamily: 'var(--font-mono)',
     fontSize: 11,
-    color: 'var(--green-400)',
+    color: 'var(--green-600)',
     letterSpacing: '0.1em',
     marginBottom: 12,
   },
@@ -32,11 +20,10 @@ const aboutStyles = {
     fontFamily: 'var(--font-display)',
     fontSize: 22,
     marginBottom: 8,
-    color: 'white',
   },
   valDesc: {
     fontSize: 14,
-    color: 'rgba(255,255,255,0.72)',
+    color: 'var(--ink-500)',
   },
   imageStack: {
     position: 'relative',
@@ -136,10 +123,10 @@ function WorkshopSlider() {
 
 function About({ t }) {
   const values = [
-    { n: '01', t: t('about_value_1_t'), d: t('about_value_1_d'), img: 'assets/garmen2.jpg' },
-    { n: '02', t: t('about_value_2_t'), d: t('about_value_2_d'), img: 'assets/wearpack-ofi.webp' },
-    { n: '03', t: t('about_value_3_t'), d: t('about_value_3_d'), img: 'assets/kemeja-tropical-byd.webp' },
-    { n: '04', t: t('about_value_4_t'), d: t('about_value_4_d'), img: 'assets/kemeja-modernland.webp' },
+    { n: '01', t: t('about_value_1_t'), d: t('about_value_1_d') },
+    { n: '02', t: t('about_value_2_t'), d: t('about_value_2_d') },
+    { n: '03', t: t('about_value_3_t'), d: t('about_value_3_d') },
+    { n: '04', t: t('about_value_4_t'), d: t('about_value_4_d') },
   ];
 
   return (
@@ -164,12 +151,9 @@ function About({ t }) {
             <div style={aboutStyles.values}>
               {values.map(v => (
                 <div key={v.n} style={aboutStyles.valCard}>
-                  <img src={v.img} alt={v.t} style={aboutStyles.valBg} />
-                  <div style={aboutStyles.valOverlay}>
-                    <div style={aboutStyles.valNum}>— {v.n}</div>
-                    <div style={aboutStyles.valTitle}>{v.t}</div>
-                    <div style={aboutStyles.valDesc}>{v.d}</div>
-                  </div>
+                  <div style={aboutStyles.valNum}>— {v.n}</div>
+                  <div style={aboutStyles.valTitle}>{v.t}</div>
+                  <div style={aboutStyles.valDesc}>{v.d}</div>
                 </div>
               ))}
             </div>
