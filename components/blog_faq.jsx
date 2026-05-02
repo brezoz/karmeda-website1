@@ -11,14 +11,14 @@ const blogStyles = {
 };
 
 const POSTS_ID = [
-  { date: '5 Mar 2025', cat: 'Panduan', title: 'Cara Memilih Vendor Konveksi Seragam Perusahaan yang Tepat', excerpt: '7 kriteria wajib sebelum menandatangani kontrak dengan konveksi — dari kapasitas produksi hingga garansi cacat.', tone: 'green', href: 'blog/cara-memilih-vendor-konveksi-seragam.html' },
-  { date: '18 Feb 2025', cat: 'Biaya & Anggaran', title: 'Panduan Harga Seragam Karyawan 2025: Estimasi & Tips Hemat', excerpt: 'Tabel harga realistis per jenis seragam — kemeja, polo, wearpack, scrub — plus formula kalkulasi anggaran.', tone: '', href: 'blog/harga-seragam-karyawan-2025.html' },
-  { date: '28 Jan 2025', cat: 'Jenis Produk', title: '7 Jenis Seragam Kantor Profesional untuk Perusahaan Anda', excerpt: 'Dari kemeja PDH hingga wearpack industri — panduan memilih seragam paling tepat untuk industri dan fungsi kerja Anda.', tone: 'dark', href: 'blog/7-jenis-seragam-kantor-profesional.html' },
+  { date: '5 Mar 2025', cat: 'Panduan', title: 'Cara Memilih Vendor Konveksi Seragam Perusahaan yang Tepat', excerpt: '7 kriteria wajib sebelum menandatangani kontrak dengan konveksi — dari kapasitas produksi hingga garansi cacat.', tone: 'green', href: 'blog/cara-memilih-vendor-konveksi-seragam.html', img: 'assets/blog-cara-memilih-vendor.webp' },
+  { date: '18 Feb 2025', cat: 'Biaya & Anggaran', title: 'Panduan Harga Seragam Karyawan 2025: Estimasi & Tips Hemat', excerpt: 'Tabel harga realistis per jenis seragam — kemeja, polo, wearpack, scrub — plus formula kalkulasi anggaran.', tone: '', href: 'blog/harga-seragam-karyawan-2025.html', img: 'assets/blog-panduan-harga-seragam.webp' },
+  { date: '28 Jan 2025', cat: 'Jenis Produk', title: '7 Jenis Seragam Kantor Profesional untuk Perusahaan Anda', excerpt: 'Dari kemeja PDH hingga wearpack industri — panduan memilih seragam paling tepat untuk industri dan fungsi kerja Anda.', tone: 'dark', href: 'blog/7-jenis-seragam-kantor-profesional.html', img: 'assets/blog-7-jenis-seragam.webp' },
 ];
 const POSTS_EN = [
-  { date: '5 Mar 2025', cat: 'Guide', title: 'How to Choose the Right Corporate Uniform Manufacturer', excerpt: '7 must-check criteria before signing a contract — from production capacity to defect guarantees.', tone: 'green', href: 'blog/cara-memilih-vendor-konveksi-seragam.html' },
-  { date: '18 Feb 2025', cat: 'Cost & Budget', title: 'Employee Uniform Pricing Guide 2025: Cost Estimates & Saving Tips', excerpt: 'Realistic price table per uniform type — shirts, polos, coveralls, scrubs — plus budget calculation formula.', tone: '', href: 'blog/harga-seragam-karyawan-2025.html' },
-  { date: '28 Jan 2025', cat: 'Product Types', title: '7 Professional Office Uniform Types for Your Company', excerpt: 'From PDH shirts to industrial coveralls — a guide to choosing the right uniform for your industry.', tone: 'dark', href: 'blog/7-jenis-seragam-kantor-profesional.html' },
+  { date: '5 Mar 2025', cat: 'Guide', title: 'How to Choose the Right Corporate Uniform Manufacturer', excerpt: '7 must-check criteria before signing a contract — from production capacity to defect guarantees.', tone: 'green', href: 'blog/cara-memilih-vendor-konveksi-seragam.html', img: 'assets/blog-cara-memilih-vendor.webp' },
+  { date: '18 Feb 2025', cat: 'Cost & Budget', title: 'Employee Uniform Pricing Guide 2025: Cost Estimates & Saving Tips', excerpt: 'Realistic price table per uniform type — shirts, polos, coveralls, scrubs — plus budget calculation formula.', tone: '', href: 'blog/harga-seragam-karyawan-2025.html', img: 'assets/blog-panduan-harga-seragam.webp' },
+  { date: '28 Jan 2025', cat: 'Product Types', title: '7 Professional Office Uniform Types for Your Company', excerpt: 'From PDH shirts to industrial coveralls — a guide to choosing the right uniform for your industry.', tone: 'dark', href: 'blog/7-jenis-seragam-kantor-profesional.html', img: 'assets/blog-7-jenis-seragam.webp' },
 ];
 
 function Blog({ t, lang }) {
@@ -34,7 +34,10 @@ function Blog({ t, lang }) {
           {posts.map((p, i) => (
             <a key={i} href={p.href || '#blog'} style={{textDecoration:'none', color:'inherit', display:'block'}} className="card" >
               <article style={blogStyles.card}>
-                <div className={`ph ${p.tone}`} style={blogStyles.img}>{p.cat.toUpperCase()}</div>
+                {p.img
+                  ? <img src={p.img} alt={p.title} style={{...blogStyles.img, width:'100%', objectFit:'cover', display:'block'}} />
+                  : <div className={`ph ${p.tone}`} style={blogStyles.img}>{p.cat.toUpperCase()}</div>
+                }
                 <div style={blogStyles.body}>
                   <div style={blogStyles.meta}>{p.date} · {p.cat}</div>
                   <h3 style={blogStyles.title}>{p.title}</h3>
