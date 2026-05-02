@@ -27,7 +27,7 @@ const productStyles = {
 };
 
 const PRODUCTS = [
-  { cat: 'corporate', name: 'Kemeja Tropical', en: 'Corporate PDH', desc: 'Kemeja kerja formal dengan logo bordir', en_desc: 'Formal work shirt with embroidered logo', price: '180–320rb', moq: 'MOQ 50', tone: 'green' },
+  { cat: 'corporate', name: 'Kemeja Tropical', en: 'Corporate PDH', desc: 'Kemeja kerja formal dengan logo bordir', en_desc: 'Formal work shirt with embroidered logo', price: '180–320rb', moq: 'MOQ 50', tone: 'green', images: ['assets/kemeja-tropical-byd.webp','assets/kemeja-modernland.webp','assets/kemeja-tropical-toyota.webp','assets/kemeja-tropical-honda.webp','assets/kemeja-tropical-1.webp','assets/kemeja-tropical-2.webp'], interval: 3000 },
   { cat: 'corporate', name: 'Polo Shirt Premium', en: 'Premium Polo Shirt', desc: 'Cotton pique 200gsm, fit tailored', en_desc: 'Cotton pique 200gsm, tailored fit', price: '95–160rb', moq: 'MOQ 100', images: ['assets/polo-formula.webp','assets/polo-tehgelas.webp','assets/polo-adaro.webp'], interval: 3000 },
   { cat: 'industrial', name: 'Wearpack Standard', en: 'Standard Coverall', desc: 'Drill 100% cotton, double stitched', en_desc: 'Drill 100% cotton, double stitched', price: '280–420rb', moq: 'MOQ 30', tone: 'dark' },
   { cat: 'corporate', name: 'Blazer Wanita', en: 'Women Blazer', desc: 'Wool blend, lining premium', en_desc: 'Wool blend, premium lining', price: '450–800rb', moq: 'MOQ 30', tone: 'dark' },
