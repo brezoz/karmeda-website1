@@ -69,12 +69,25 @@ function ProductSlider({ images, style, interval }) {
   const [cur, setCur] = React.useState(0);
   const total = images.length;
   const ms = interval || 2500;
+  const touchStart = React.useRef(null);
+
+  // Reset cur when images change (e.g. category switch)
+  React.useEffect(() => { setCur(0); }, [images]);
 
   React.useEffect(() => {
     if (total <= 1) return;
     const t = setInterval(() => setCur(c => (c + 1) % total), ms);
     return () => clearInterval(t);
   }, [ms, total]);
+
+  function onTouchStart(e) { touchStart.current = e.touches[0].clientX; }
+  function onTouchEnd(e) {
+    if (touchStart.current === null) return;
+    const diff = touchStart.current - e.changedTouches[0].clientX;
+    if (diff > 30) setCur(c => (c + 1) % total);
+    else if (diff < -30) setCur(c => (c - 1 + total) % total);
+    touchStart.current = null;
+  }
 
   // Single image — render directly, no slider UI
   if (total === 1) {
@@ -83,16 +96,6 @@ function ProductSlider({ images, style, interval }) {
         <img src={images[0]} alt="foto produk" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </div>
     );
-  }
-
-  const touchStart = React.useRef(null);
-  function onTouchStart(e) { touchStart.current = e.touches[0].clientX; }
-  function onTouchEnd(e) {
-    if (touchStart.current === null) return;
-    const diff = touchStart.current - e.changedTouches[0].clientX;
-    if (diff > 30) setCur(c => (c + 1) % total);
-    else if (diff < -30) setCur(c => (c - 1 + total) % total);
-    touchStart.current = null;
   }
 
   const arrowBtn = (dir) => ({
