@@ -64,9 +64,9 @@ function App() {
       <Hero variant={tweaks.heroVariant} t={t} lang={lang}/>
       <Marquee t={t}/>
       <About t={t}/>
+      <Products t={t} lang={lang}/>
       <Process t={t}/>
       <Portfolio t={t} lang={lang}/>
-      <Products t={t} lang={lang}/>
       <Calculator t={t} lang={lang}/>
       <Measurement t={t} lang={lang}/>
       <Blog t={t} lang={lang}/>

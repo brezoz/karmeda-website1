@@ -131,26 +131,6 @@ function Portfolio({ t, lang }) {
         <div style={portfolioStyles.caseGrid} className="case-grid">
           {[]}
         </div>
-        <div style={portfolioStyles.testimonial} className="testimonial">
-          <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, lineHeight: 1.2, color: 'var(--ink-900)' }}>
-              <em style={{ color: 'var(--green-600)' }}>"</em>
-              {lang === 'id' ?
-              'Karmeda mengantarkan 1.200 wearpack tepat waktu untuk launching pabrik baru kami. Quality control mereka rapi — zero reject batch.' :
-              'Karmeda delivered 1,200 wearpack on time for our new factory launch. Their QC is tight — zero reject batch.'
-              }
-              <em style={{ color: 'var(--green-600)' }}>"</em>
-            </div>
-            <div style={{ marginTop: 24, fontSize: 13, color: 'var(--ink-500)' }}>
-              <div style={{ fontWeight: 600, color: 'var(--ink-900)', marginBottom: 2 }}>Budi Santoso</div>
-              Procurement Manager · PT. ORANG TUA GROUP
-            </div>
-          </div>
-          <a href="#portfolio" className="btn btn-primary" style={{ flexShrink: 0 }}>
-            {t('portfolio_view_all')}
-            <span className="btn-arrow">→</span>
-          </a>
-        </div>
       </div>
     </section>);
 
