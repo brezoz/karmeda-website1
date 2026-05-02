@@ -11,14 +11,14 @@ const blogStyles = {
 };
 
 const POSTS_ID = [
-  { date: '12 Mar 2025', cat: 'Material', title: 'Memilih kain untuk seragam tropis: cotton vs polycotton', excerpt: 'Panduan lengkap memilih bahan seragam yang nyaman untuk iklim Indonesia, dengan perbandingan harga dan durabilitas.', tone: 'green' },
-  { date: '28 Feb 2025', cat: 'Workflow', title: '5 hal yang harus disiapkan sebelum brief ke konveksi', excerpt: 'Spesifikasi teknis, sample warna, dan timeline produksi yang sering dilewatkan klien — checklist kami.', tone: '' },
-  { date: '14 Feb 2025', cat: 'Studi Kasus', title: 'Bagaimana RS Premier menyeragamkan 180 staf medis', excerpt: 'Studi kasus produksi scrub suit untuk 3 divisi rumah sakit, dari fitting massal hingga delivery.', tone: 'dark' },
+  { date: '5 Mar 2025', cat: 'Panduan', title: 'Cara Memilih Vendor Konveksi Seragam Perusahaan yang Tepat', excerpt: '7 kriteria wajib sebelum menandatangani kontrak dengan konveksi — dari kapasitas produksi hingga garansi cacat.', tone: 'green', href: 'blog/cara-memilih-vendor-konveksi-seragam.html' },
+  { date: '18 Feb 2025', cat: 'Biaya & Anggaran', title: 'Panduan Harga Seragam Karyawan 2025: Estimasi & Tips Hemat', excerpt: 'Tabel harga realistis per jenis seragam — kemeja, polo, wearpack, scrub — plus formula kalkulasi anggaran.', tone: '', href: 'blog/harga-seragam-karyawan-2025.html' },
+  { date: '28 Jan 2025', cat: 'Jenis Produk', title: '7 Jenis Seragam Kantor Profesional untuk Perusahaan Anda', excerpt: 'Dari kemeja PDH hingga wearpack industri — panduan memilih seragam paling tepat untuk industri dan fungsi kerja Anda.', tone: 'dark', href: 'blog/7-jenis-seragam-kantor-profesional.html' },
 ];
 const POSTS_EN = [
-  { date: '12 Mar 2025', cat: 'Material', title: 'Choosing fabric for tropical uniforms: cotton vs polycotton', excerpt: 'Complete guide to picking comfortable uniform fabric for Indonesian climate — price and durability compared.', tone: 'green' },
-  { date: '28 Feb 2025', cat: 'Workflow', title: '5 things to prepare before briefing a manufacturer', excerpt: 'Technical specs, color samples, and production timelines that clients often overlook — our checklist.', tone: '' },
-  { date: '14 Feb 2025', cat: 'Case Study', title: 'How RS Premier outfitted 180 medical staff', excerpt: 'Case study on producing scrub suits for 3 hospital divisions, from mass fitting to delivery.', tone: 'dark' },
+  { date: '5 Mar 2025', cat: 'Guide', title: 'How to Choose the Right Corporate Uniform Manufacturer', excerpt: '7 must-check criteria before signing a contract — from production capacity to defect guarantees.', tone: 'green', href: 'blog/cara-memilih-vendor-konveksi-seragam.html' },
+  { date: '18 Feb 2025', cat: 'Cost & Budget', title: 'Employee Uniform Pricing Guide 2025: Cost Estimates & Saving Tips', excerpt: 'Realistic price table per uniform type — shirts, polos, coveralls, scrubs — plus budget calculation formula.', tone: '', href: 'blog/harga-seragam-karyawan-2025.html' },
+  { date: '28 Jan 2025', cat: 'Product Types', title: '7 Professional Office Uniform Types for Your Company', excerpt: 'From PDH shirts to industrial coveralls — a guide to choosing the right uniform for your industry.', tone: 'dark', href: 'blog/7-jenis-seragam-kantor-profesional.html' },
 ];
 
 function Blog({ t, lang }) {
@@ -32,17 +32,19 @@ function Blog({ t, lang }) {
         </div>
         <div style={blogStyles.grid} className="blog-grid">
           {posts.map((p, i) => (
-            <article key={i} className="card" style={blogStyles.card}>
-              <div className={`ph ${p.tone}`} style={blogStyles.img}>{p.cat.toUpperCase()}</div>
-              <div style={blogStyles.body}>
-                <div style={blogStyles.meta}>{p.date} · {p.cat}</div>
-                <h3 style={blogStyles.title}>{p.title}</h3>
-                <p style={blogStyles.excerpt}>{p.excerpt}</p>
-                <a href="#blog" style={{fontSize: 13, fontWeight: 500, color: 'var(--green-700)', textDecoration: 'underline', textUnderlineOffset: 4}}>
-                  {t('blog_read')} →
-                </a>
-              </div>
-            </article>
+            <a key={i} href={p.href || '#blog'} style={{textDecoration:'none', color:'inherit', display:'block'}} className="card" >
+              <article style={blogStyles.card}>
+                <div className={`ph ${p.tone}`} style={blogStyles.img}>{p.cat.toUpperCase()}</div>
+                <div style={blogStyles.body}>
+                  <div style={blogStyles.meta}>{p.date} · {p.cat}</div>
+                  <h3 style={blogStyles.title}>{p.title}</h3>
+                  <p style={blogStyles.excerpt}>{p.excerpt}</p>
+                  <span style={{fontSize: 13, fontWeight: 500, color: 'var(--green-700)', textDecoration: 'underline', textUnderlineOffset: 4}}>
+                    {t('blog_read')} →
+                  </span>
+                </div>
+              </article>
+            </a>
           ))}
         </div>
       </div>
