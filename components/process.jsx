@@ -132,34 +132,95 @@ function Portfolio({ t, lang }) {
           {[]}
         </div>
 
-        {/* Testimoni */}
-        <div style={{
-          background: 'var(--paper-2)', padding: 48, borderRadius: 'var(--radius-lg)',
-          marginTop: 64, display: 'grid', gridTemplateColumns: '1fr auto',
-          gap: 48, alignItems: 'center'
-        }} className="testimonial">
-          <div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, lineHeight: 1.2, color: 'var(--ink-900)' }}>
-              <em style={{ color: 'var(--green-600)' }}>"</em>
-              {lang === 'id'
-                ? 'Karmeda mengantarkan 1.200 wearpack tepat waktu untuk launching pabrik baru kami. Quality control mereka rapi — zero reject batch.'
-                : 'Karmeda delivered 1,200 wearpack on time for our new factory launch. Their QC is tight — zero reject batch.'}
-              <em style={{ color: 'var(--green-600)' }}>"</em>
-            </div>
-            <div style={{ marginTop: 24, fontSize: 13, color: 'var(--ink-500)' }}>
-              <div style={{ fontWeight: 600, color: 'var(--ink-900)', marginBottom: 2 }}>Budi Santoso</div>
-              Procurement Manager · PT. ORANG TUA GROUP
-            </div>
-          </div>
-          <a href="#contact" className="btn btn-primary" style={{ flexShrink: 0 }}>
-            {lang === 'id' ? 'Minta Penawaran' : 'Get a Quote'}
-            <span className="btn-arrow">→</span>
-          </a>
-        </div>
+        {/* Testimoni Slider */}
+        <TestiSlider lang={lang} />
 
       </div>
     </section>);
 
+}
+
+const TESTIMONI = [
+  { quote: 'Sudah 3 tahun kami pakai Karmeda untuk seragam karyawan. Kualitasnya konsisten, jahitannya kuat, dan tim mereka responsif banget kalau ada revisi.', name: 'Dewi Hartanti', role: 'HRD Manager', company: 'Modernland Tbk' },
+  { quote: 'Karmeda bantu kami bikin seragam guru dan staf sekolah dengan desain yang elegan. Tepat waktu, bahan nyaman dipakai seharian, dan harganya masuk akal.', name: 'Pak Suherman', role: 'Kepala Sekolah', company: 'Sekolah Harapan Bangsa' },
+  { quote: 'Pesanan 800 pcs selesai lebih cepat dari jadwal. Quality control-nya ketat, dari 800 pcs tidak ada satu pun yang reject. Kami sangat puas.', name: 'Rina Kusumawati', role: 'Procurement Officer', company: 'UPP (Orang Tua Group)' },
+  { quote: 'Kami butuh seragam pabrik yang tahan lama dan nyaman untuk shift panjang. Karmeda kasih solusi bahan yang pas, dan pengiriman tepat waktu.', name: 'Agus Firmansyah', role: 'GA Manager', company: 'BT Cocoa' },
+  { quote: 'Komunikasi lancar dari awal sampai selesai. Sampelnya langsung oke di percobaan pertama, jadi tidak perlu bolak-balik revisi. Hemat waktu banget.', name: 'Sari Nuraini', role: 'Admin & Procurement', company: 'AKY' },
+  { quote: 'Sudah coba beberapa vendor sebelumnya, tapi Karmeda yang paling detail dalam memahami kebutuhan kami. Hasilnya rapi dan sesuai standar perusahaan.', name: 'Budi Prasetyo', role: 'Purchasing Manager', company: 'Aplus' },
+  { quote: 'Seragam untuk tim outlet kami dibuat Karmeda — hasilnya profesional, karyawan senang pakainya, dan pelanggan pun berikan komentar positif soal penampilan tim kami.', name: 'Linda Setiawati', role: 'Operations Supervisor', company: 'Lotte' },
+  { quote: 'Karmeda mengerti standar seragam medis dengan baik. Bahan yang dipilih breathable dan mudah dicuci, sangat cocok untuk kebutuhan rumah sakit kami.', name: 'dr. Mira Anggraeni', role: 'Kepala Keperawatan', company: 'RS MZ' },
+  { quote: 'Harga bersaing tapi kualitas tidak murahan. Untuk perusahaan kami yang pesan rutin tiap semester, Karmeda jadi mitra yang bisa diandalkan.', name: 'Hendro Santoso', role: 'Direktur Operasional', company: 'Modernland Tbk' },
+  { quote: 'Proses dari desain sampai terima barang sangat smooth. Tim Karmeda proaktif kasih update, jadi kami tidak perlu terus-terus tanya progress pesanan.', name: 'Yuliana Putri', role: 'Finance & GA', company: 'Lotte' },
+];
+
+function TestiSlider({ lang }) {
+  const [cur, setCur] = React.useState(0);
+  const total = TESTIMONI.length;
+  const touchStart = React.useRef(null);
+
+  React.useEffect(() => {
+    const t = setInterval(() => setCur(c => (c + 1) % total), 4000);
+    return () => clearInterval(t);
+  }, []);
+
+  function onTouchStart(e) { touchStart.current = e.touches[0].clientX; }
+  function onTouchEnd(e) {
+    if (!touchStart.current) return;
+    const diff = touchStart.current - e.changedTouches[0].clientX;
+    if (diff > 40) setCur(c => (c + 1) % total);
+    else if (diff < -40) setCur(c => (c - 1 + total) % total);
+    touchStart.current = null;
+  }
+
+  const testi = TESTIMONI[cur];
+
+  return (
+    <div style={{ marginTop: 64 }} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <div style={{
+        background: 'var(--paper-2)', padding: '48px 48px 36px', borderRadius: 'var(--radius-lg)',
+        position: 'relative', overflow: 'hidden', minHeight: 200,
+      }}>
+        {/* Quote */}
+        <div style={{ fontSize: 22, lineHeight: 1.55, color: 'var(--ink-900)', fontStyle: 'italic', maxWidth: '80%' }}>
+          <em style={{ color: 'var(--green-500)', fontSize: 32, fontStyle: 'normal' }}>"</em>
+          {testi.quote}
+          <em style={{ color: 'var(--green-500)', fontSize: 32, fontStyle: 'normal' }}>"</em>
+        </div>
+        {/* Author */}
+        <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div>
+            <div style={{ fontWeight: 700, color: 'var(--ink-900)', fontSize: 15 }}>{testi.name}</div>
+            <div style={{ fontSize: 13, color: 'var(--ink-500)', marginTop: 2 }}>{testi.role} · {testi.company}</div>
+          </div>
+          <a href="#contact" className="btn btn-primary" style={{ flexShrink: 0, fontSize: 13, padding: '10px 18px' }}>
+            {lang === 'id' ? 'Minta Penawaran' : 'Get a Quote'}
+            <span className="btn-arrow">→</span>
+          </a>
+        </div>
+        {/* Nav arrows */}
+        <button onClick={() => setCur(c => (c - 1 + total) % total)} style={{
+          position: 'absolute', top: 20, right: 56,
+          background: 'white', border: '1px solid var(--ink-200)', borderRadius: '50%',
+          width: 32, height: 32, cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>‹</button>
+        <button onClick={() => setCur(c => (c + 1) % total)} style={{
+          position: 'absolute', top: 20, right: 16,
+          background: 'white', border: '1px solid var(--ink-200)', borderRadius: '50%',
+          width: 32, height: 32, cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>›</button>
+      </div>
+      {/* Dots */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 6, marginTop: 16 }}>
+        {TESTIMONI.map((_, i) => (
+          <button key={i} onClick={() => setCur(i)} style={{
+            width: i === cur ? 20 : 7, height: 7, borderRadius: 999, border: 'none', cursor: 'pointer', padding: 0,
+            background: i === cur ? 'var(--green-500)' : 'var(--ink-200)',
+            transition: 'all 0.3s',
+          }} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 Object.assign(window, { Process, Portfolio });
