@@ -129,19 +129,7 @@ function Portfolio({ t, lang }) {
           )}
         </div>
         <div style={portfolioStyles.caseGrid} className="case-grid">
-          {CASES.map((c, i) =>
-          <div key={i} className="card" style={portfolioStyles.caseCard}>
-              <div className={`ph ${c.tone || ''}`} style={{ ...(c.tall ? portfolioStyles.caseImgTall : portfolioStyles.caseImg), backgroundSize: "cover" }}>
-                {c.client.toUpperCase()}
-              </div>
-              <div style={portfolioStyles.caseBody}>
-                <div className="pill" style={{ marginBottom: 12 }}><span className="dot" />{c.tag}</div>
-                <div style={portfolioStyles.caseTitle}>{c.client}</div>
-                <div style={{ fontSize: 14, color: 'var(--ink-500)', marginBottom: 14 }}>{c.what}</div>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--green-700)' }}>{c.n} delivered</div>
-              </div>
-            </div>
-          )}
+          {[]}
         </div>
         <div style={portfolioStyles.testimonial} className="testimonial">
           <div>
