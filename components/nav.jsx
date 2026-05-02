@@ -56,8 +56,8 @@ function Nav({ lang, setLang, t }) {
         <a href="#home" className="brand">
           <img src="assets/logo-karmeda.png" alt="Karmeda" className="nav-logo" style={{ height: 44, width: 44, objectFit: 'contain', borderRadius: 8 }} />
           <div>
-            <div className="brand-name">Karmeda</div>
-            <div className="brand-sub nav-sub-hide">PT Karuna Metta Ananda</div>
+            <div className="brand-name" style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.01em' }}>PT. KARMEDA</div>
+            <div className="brand-sub nav-sub-hide">Karuna Metta Ananda</div>
           </div>
         </a>
         <nav className="nav-links">
