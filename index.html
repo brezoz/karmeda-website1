@@ -58,7 +58,19 @@
       .size-finder-results { grid-template-columns: 1fr !important; }
       :root { --gutter: 16px; }
       .section { padding: 64px 0 !important; }
-      .hero-split-grid img { width: 100% !important; max-width: 100% !important; object-position: center center !important; }
+      /* Hero photo — full width, no overflow */
+      .hero-split-grid img {
+        width: 100% !important;
+        max-width: 100% !important;
+        object-position: center center !important;
+        border-radius: 12px !important;
+      }
+      /* Stats — 2x2 grid on mobile */
+      .hero-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+        margin-top: 36px !important;
+      }
     }
 
     /* Prevent horizontal overflow globally */

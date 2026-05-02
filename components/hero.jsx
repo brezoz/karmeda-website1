@@ -147,8 +147,8 @@ function HeroStats({ t, dark }) {
     { n: '15K', l: t('stat_pieces') },
   ];
   return (
-    <div style={{
-      display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 32,
+    <div className="hero-stats-grid" style={{
+      display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24,
       marginTop: 56,
       paddingTop: 32,
       borderTop: dark ? '1px solid #2a3230' : '1px solid var(--ink-200)',
@@ -157,16 +157,16 @@ function HeroStats({ t, dark }) {
         <div key={i}>
           <div style={{
             fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(36px, 4vw, 56px)',
+            fontSize: 'clamp(28px, 4vw, 56px)',
             lineHeight: 1,
             color: dark ? 'var(--green-400)' : 'var(--green-600)',
           }}>{s.n}</div>
           <div style={{
             marginTop: 8,
-            fontSize: 12,
+            fontSize: 11,
             fontFamily: 'var(--font-mono)',
             textTransform: 'uppercase',
-            letterSpacing: '0.1em',
+            letterSpacing: '0.08em',
             color: dark ? 'var(--ink-400)' : 'var(--ink-500)',
           }}>{s.l}</div>
         </div>
