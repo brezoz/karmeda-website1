@@ -1,26 +1,26 @@
 // process.jsx — Production process steps + Portfolio
 const processStyles = {
-  wrap: { padding: '120px 0', background: 'var(--ink-900)', color: 'var(--paper)' },
-  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 56 },
+  wrap: { padding: '64px 0', background: 'var(--ink-900)', color: 'var(--paper)' },
+  grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 32 },
   step: {
-    padding: 32,
+    padding: '20px 24px',
     background: '#1A201C',
     border: '1px solid #2A3230',
     borderRadius: 'var(--radius)',
     display: 'flex',
-    gap: 24,
+    gap: 16,
     transition: 'all 0.2s'
   },
   stepNum: {
     fontFamily: 'var(--font-display)',
-    fontSize: 56,
+    fontSize: 40,
     color: 'var(--green-400)',
     lineHeight: 1,
     flexShrink: 0,
-    width: 64
+    width: 48
   },
-  stepTitle: { fontFamily: 'var(--font-display)', fontSize: 26, marginBottom: 8 },
-  stepDesc: { fontSize: 14, color: 'var(--ink-300)' }
+  stepTitle: { fontFamily: 'var(--font-display)', fontSize: 22, marginBottom: 4 },
+  stepDesc: { fontSize: 13, color: 'var(--ink-300)' }
 };
 
 function Process({ t }) {
@@ -28,7 +28,7 @@ function Process({ t }) {
   return (
     <section id="process" style={processStyles.wrap}>
       <div className="container">
-        <div className="section-head">
+        <div className="section-head" style={{ marginBottom: 0 }}>
           <div className="eyebrow on-dark">{t('process_eyebrow')}</div>
           <h2 className="h-1" style={{ color: 'white' }}>{t('process_title')}</h2>
         </div>
