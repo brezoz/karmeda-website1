@@ -54,10 +54,10 @@ function Nav({ lang, setLang, t }) {
     <div className={`nav-wrap ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav">
         <a href="#home" className="brand">
-          <img src="assets/logo-karmeda.png" alt="Karmeda" style={{ height: 56, width: 56, objectFit: 'contain', borderRadius: 10 }} />
+          <img src="assets/logo-karmeda.png" alt="Karmeda" className="nav-logo" style={{ height: 44, width: 44, objectFit: 'contain', borderRadius: 8 }} />
           <div>
             <div className="brand-name">Karmeda</div>
-            <div className="brand-sub">PT Karuna Metta Ananda</div>
+            <div className="brand-sub nav-sub-hide">PT Karuna Metta Ananda</div>
           </div>
         </a>
         <nav className="nav-links">
@@ -70,8 +70,9 @@ function Nav({ lang, setLang, t }) {
             <button className={lang === 'id' ? 'active' : ''} onClick={() => setLang('id')}>ID</button>
             <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           </div>
-          <a href="#contact" className="btn btn-primary" style={{padding: '10px 16px', fontSize: 13}}>
-            {t('nav_cta')}
+          <a href="#contact" className="btn btn-primary nav-cta" style={{padding: '10px 16px', fontSize: 13}}>
+            <span className="nav-cta-full">{t('nav_cta')}</span>
+            <span className="nav-cta-short">Penawaran</span>
             <span className="btn-arrow">→</span>
           </a>
         </div>
