@@ -144,7 +144,7 @@ function HeroStats({ t, dark }) {
     { n: '20+', l: t('stat_years') },
     { n: '50', l: t('stat_employees') },
     { n: '200+', l: t('stat_clients') },
-    { n: '15K', l: t('stat_pieces') },
+    { n: '10K', l: t('stat_pieces') },
   ];
   return (
     <div className="hero-stats-grid" style={{
