@@ -27,13 +27,13 @@ const productStyles = {
 };
 
 const PRODUCTS = [
-  { cat: 'corporate', name: 'PDH Korporat', en: 'Corporate PDH', desc: 'Kemeja kerja formal dengan logo bordir', en_desc: 'Formal work shirt with embroidered logo', price: '180–320rb', moq: 'MOQ 50', tone: 'green' },
+  { cat: 'corporate', name: 'Kemeja Tropical', en: 'Corporate PDH', desc: 'Kemeja kerja formal dengan logo bordir', en_desc: 'Formal work shirt with embroidered logo', price: '180–320rb', moq: 'MOQ 50', tone: 'green' },
   { cat: 'corporate', name: 'Polo Shirt Premium', en: 'Premium Polo Shirt', desc: 'Cotton pique 200gsm, fit tailored', en_desc: 'Cotton pique 200gsm, tailored fit', price: '95–160rb', moq: 'MOQ 100' },
+  { cat: 'industrial', name: 'Wearpack Standard', en: 'Standard Coverall', desc: 'Drill 100% cotton, double stitched', en_desc: 'Drill 100% cotton, double stitched', price: '280–420rb', moq: 'MOQ 30', tone: 'dark' },
   { cat: 'corporate', name: 'Blazer Wanita', en: 'Women Blazer', desc: 'Wool blend, lining premium', en_desc: 'Wool blend, premium lining', price: '450–800rb', moq: 'MOQ 30', tone: 'dark' },
   { cat: 'school', name: 'Seragam OSIS', en: 'Student Uniform', desc: 'Bahan oxford, jahit kuat', en_desc: 'Oxford fabric, durable stitching', price: '120–180rb', moq: 'MOQ 100' },
   { cat: 'school', name: 'Jas Almamater', en: 'University Jacket', desc: 'Drill twill, bordir custom', en_desc: 'Twill drill, custom embroidery', price: '220–380rb', moq: 'MOQ 50', tone: 'green' },
   { cat: 'school', name: 'Pramuka', en: 'Scout Uniform', desc: 'Sesuai standar Kwarnas', en_desc: 'Per Kwarnas standards', price: '95–140rb', moq: 'MOQ 50' },
-  { cat: 'industrial', name: 'Wearpack Standard', en: 'Standard Coverall', desc: 'Drill 100% cotton, double stitched', en_desc: 'Drill 100% cotton, double stitched', price: '280–420rb', moq: 'MOQ 30', tone: 'dark' },
   { cat: 'industrial', name: 'Safety Vest', en: 'Safety Vest', desc: 'Reflective tape EN471', en_desc: 'EN471 reflective tape', price: '85–140rb', moq: 'MOQ 100', tone: 'green' },
   { cat: 'medical', name: 'Baju Kantor RS', en: 'Hospital Office Wear', desc: 'Seragam staf administrasi rumah sakit, formal & nyaman', en_desc: 'Hospital admin staff uniform, formal & comfortable', price: '160–260rb', moq: 'MOQ 30' },
   { cat: 'medical', name: 'Baju Perawat', en: 'Doctor & Nurse Scrub', desc: 'Scrub suit anti-bacterial, breathable, tahan cuci tinggi', en_desc: 'Anti-bacterial scrub suit, breathable, high-wash resistant', price: '150–240rb', moq: 'MOQ 30', tone: 'green', images: ['assets/perawat1.webp','assets/perawat2.webp','assets/celana-perawat2.webp','assets/celana-perawat1.webp','assets/perawat3.webp','assets/perawat4.webp'], interval: 3800 },
