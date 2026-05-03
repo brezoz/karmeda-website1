@@ -149,7 +149,7 @@ function Footer({ t }) {
   return (
     <footer style={{background:'#0A0E0B', color:'var(--ink-300)', padding: '64px 0 32px'}}>
       <div className="container">
-        <div style={{display:'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48, paddingBottom: 48, borderBottom: '1px solid #1A201C'}}>
+        <div className="footer-grid" style={{display:'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, paddingBottom: 48, borderBottom: '1px solid #1A201C'}}>
           <div>
             <div className="brand" style={{color:'white', marginBottom: 16}}>
               <div className="brand-mark"><Logo size={22}/></div>
@@ -176,6 +176,17 @@ function Footer({ t }) {
               <a href="#measure">Form Ukur</a>
               <a href="#blog">{t('nav_blog')}</a>
               <a href="#faq">FAQ</a>
+            </div>
+          </div>
+          <div>
+            <div style={{fontSize: 11, fontFamily:'var(--font-mono)', textTransform:'uppercase', letterSpacing:'0.1em', color: 'var(--green-200)', marginBottom: 16}}>Area Layanan</div>
+            <div style={{display:'flex', flexDirection:'column', gap: 10, fontSize: 14}}>
+              <a href="lokasi/konveksi-seragam-tangerang.html">Tangerang</a>
+              <a href="lokasi/konveksi-seragam-tangerang-selatan.html">Tangerang Selatan</a>
+              <a href="lokasi/konveksi-seragam-jakarta.html">Jakarta</a>
+              <a href="lokasi/konveksi-seragam-bekasi.html">Bekasi</a>
+              <a href="lokasi/konveksi-seragam-bogor.html">Bogor</a>
+              <a href="lokasi/konveksi-seragam-depok.html">Depok</a>
             </div>
           </div>
           <div>
