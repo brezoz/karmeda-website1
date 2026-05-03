@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karmeda-website1.vercel.app/sitemap.xml
