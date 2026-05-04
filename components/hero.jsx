@@ -60,7 +60,7 @@ function HeroSplit({ t }) {
             </div>
             <HeroStats t={t} />
           </div>
-          <img src="assets/hero-photo.jpeg" alt="Tim Karmeda" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }} />
+          <img src="assets/hero1.jpeg" alt="Tim Karmeda" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
         </div>
       </div>
     </section>
