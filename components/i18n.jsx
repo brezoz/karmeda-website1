@@ -14,7 +14,7 @@ const I18N = {
     hero_title_a: 'Seragam yang',
     hero_title_b: 'membentuk',
     hero_title_c: 'identitas',
-    hero_sub: 'Karmeda mengerjakan seragam korporat, sekolah, medis, hingga workwear pabrik dengan presisi konfeksi 20 tahun pengalaman.',
+    hero_sub: 'Karmeda mengerjakan seragam korporat, sekolah, medis, hingga workwear pabrik dengan presisi konveksi 20 tahun pengalaman.',
     hero_cta_primary: 'Mulai konsultasi',
     hero_cta_secondary: 'Lihat katalog',
 
@@ -29,7 +29,7 @@ const I18N = {
     about_title: 'Konveksi yang tumbuh bersama klien sejak tahun 2000.',
     about_p1: 'PT Karuna Metta Ananda (d/h:PT. Global Aditama) berdiri tahun 2000 di Tangerang. 50 penjahit ahli, mesin industrial lengkap, dan workflow QC berlapis — kami menjadi mitra produksi seragam untuk perusahaan korporat, instansi, sekolah, dan industri di seluruh Indonesia.',
     about_p2: 'Filosofi kami sederhana: seragam bukan sekadar pakaian kerja, tapi alat membangun identitas tim. Setiap jahitan adalah representasi brand Anda.',
-    about_value_1_t: 'Presisi konfeksi',
+    about_value_1_t: 'Presisi konveksi',
     about_value_1_d: 'Pola digital, ukur custom, finishing detail.',
     about_value_2_t: 'Skala fleksibel',
     about_value_2_d: 'Dari 50 pcs sampai 10.000+ dalam satu PO.',
@@ -100,7 +100,7 @@ const I18N = {
     faq_eyebrow: 'Pertanyaan sering diajukan',
     faq_title: 'Sebelum Anda bertanya.',
 
-    footer_tagline: 'Mitra konfeksi seragam profesional sejak tahun 2000.',
+    footer_tagline: 'Mitra konveksi seragam profesional sejak tahun 2000.',
     footer_explore: 'Jelajahi',
     footer_contact: 'Kontak',
     footer_address: 'Tangerang, Banten · Indonesia',
