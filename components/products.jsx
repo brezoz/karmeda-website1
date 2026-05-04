@@ -98,7 +98,7 @@ function ProductSlider({ images, style, interval }) {
   if (total === 1) {
     return (
       <div style={{ ...style, overflow: 'hidden' }}>
-        <img src={images[0]} alt="foto produk" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+        <img src={images[0]} alt="foto produk" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: '#f8f7f4' }} />
       </div>
     );
   }
@@ -123,7 +123,7 @@ function ProductSlider({ images, style, interval }) {
         <img key={i} src={src} alt={`foto ${i+1}`} style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
-          objectFit: 'cover',
+          objectFit: 'contain', background: '#f8f7f4',
           opacity: i === cur ? 1 : 0,
           transition: 'opacity 0.4s ease',
         }} />
