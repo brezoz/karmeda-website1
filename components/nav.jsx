@@ -82,4 +82,5 @@ function Nav({ lang, setLang, t }) {
   );
 }
 
+export { Logo };
 export default Nav;
