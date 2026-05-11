@@ -353,3 +353,85 @@ section { scroll-margin-top: 88px; }
 .tab-hint {
   animation: tabPop 0.55s ease both;
 }
+
+/* ─── RESPONSIVE / MOBILE ─────────────────────────────────── */
+
+/* Tablet: 768px and below */
+@media (max-width: 768px) {
+  /* Container padding */
+  .container { padding: 0 20px; }
+
+  /* Nav – hide links, keep logo + lang toggle + CTA */
+  .nav-links { display: none; }
+  .nav-sub-hide { display: none; }
+  .nav { height: 60px; }
+  body { padding-top: 60px; }
+  .scroll-top { bottom: 88px; }
+
+  /* Section padding */
+  section, .calc-wrap { padding: 72px 0 !important; }
+
+  /* Hero */
+  .hero-split { grid-template-columns: 1fr !important; }
+  .hero-split > *:last-child { display: none; } /* hide image on mobile */
+
+  /* Products grid: 1 column */
+  .products-grid { grid-template-columns: 1fr !important; }
+
+  /* Blog grid: 1 column */
+  .blog-grid { grid-template-columns: 1fr !important; }
+
+  /* Client logo grid: 3 columns */
+  .client-grid { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* Process grid: 1 column */
+  .process-grid { grid-template-columns: 1fr !important; }
+
+  /* Calculator grid: stack */
+  .calc-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .calc-type-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .calc-extras-grid { grid-template-columns: 1fr !important; }
+  .calc-total-num { font-size: 40px !important; word-break: break-all; }
+
+  /* Contact grid: stack */
+  .contact-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* RFQ form two-col: stack */
+  .rfq-two-col { grid-template-columns: 1fr !important; }
+
+  /* Footer grid: 2 columns */
+  .footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+
+  /* Case grid: 1 column */
+  .case-grid { grid-template-columns: 1fr !important; }
+
+  /* Typography scale down */
+  .h-1 { font-size: clamp(28px, 7vw, 56px) !important; }
+  .section-head { margin-bottom: 40px !important; }
+
+  /* WA float label */
+  .wa-float span:not(svg) { display: none; }
+}
+
+/* Mobile: 480px and below */
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+
+  /* Calculator card padding */
+  .calc-grid > * { padding: 24px !important; }
+
+  /* Contact form padding */
+  .contact-grid form { padding: 20px 16px !important; }
+
+  /* Footer: single column */
+  .footer-grid { grid-template-columns: 1fr !important; }
+
+  /* Client logos: 2 columns */
+  .client-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Calc total number smaller */
+  .calc-total-num { font-size: 32px !important; }
+
+  /* Section padding tighter */
+  section { padding: 56px 0 !important; }
+}

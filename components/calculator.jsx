@@ -115,7 +115,7 @@ function Calculator({ t, lang }) {
           <div style={calcStyles.card}>
             <div style={calcStyles.row}>
               <div style={calcStyles.label}>{t('calc_type')}</div>
-              <div style={{...calcStyles.segGrid, gridTemplateColumns: 'repeat(3, 1fr)'}}>
+              <div className="calc-type-grid" style={{...calcStyles.segGrid, gridTemplateColumns: 'repeat(3, 1fr)'}}>
                 {data.types.map(ty => (
                   <button key={ty.id} style={{...calcStyles.segBtn, ...(type===ty.id?calcStyles.segActive:{})}} onClick={()=>setType(ty.id)}>
                     {ty.label}
@@ -161,7 +161,7 @@ function Calculator({ t, lang }) {
             </div>
             <div style={calcStyles.row}>
               <div style={calcStyles.label}>{t('calc_extras')}</div>
-              <div style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap: 8}}>
+              <div className="calc-extras-grid" style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap: 8}}>
                 {[
                   ['emb', t('calc_extra_emb')],
                   ['print', t('calc_extra_print')],
@@ -192,7 +192,7 @@ function Calculator({ t, lang }) {
                       textDecorationColor: 'var(--ink-400)',
                       marginTop: 6, marginBottom: 2,
                     }}>{fmt(perPc * qty)}</div>
-                    <div style={{...calcStyles.totalNum, color:'var(--green-500)'}}>{fmt(total)}</div>
+                    <div className="calc-total-num" style={{...calcStyles.totalNum, color:'var(--green-500)'}}>{fmt(total)}</div>
                     <div style={{
                       display:'inline-flex', alignItems:'center', gap: 6,
                       marginTop: 6, padding:'4px 10px',
@@ -205,7 +205,7 @@ function Calculator({ t, lang }) {
                     </div>
                   </>
                 ) : (
-                  <div style={calcStyles.totalNum}>{fmt(total)}</div>
+                  <div className="calc-total-num" style={calcStyles.totalNum}>{fmt(total)}</div>
                 )}
                 <div style={{display:'flex', gap: 24, marginTop: 24, paddingTop:24, borderTop: '1px solid var(--ink-700)'}}>
                   <div>

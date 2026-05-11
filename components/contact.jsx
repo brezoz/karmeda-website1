@@ -91,7 +91,7 @@ function Contact({ t, lang }) {
           </div>
 
           <form style={contactStyles.form} onSubmit={submit}>
-            <div style={contactStyles.twoCol}>
+            <div className="rfq-two-col" style={contactStyles.twoCol}>
               <div style={contactStyles.row}>
                 <label htmlFor="rfq-name" style={contactStyles.label}>{t('rfq_name')}</label>
                 <input id="rfq-name" style={contactStyles.input} required value={form.name} onChange={e=>setForm({...form, name:e.target.value})}/>
@@ -101,7 +101,7 @@ function Contact({ t, lang }) {
                 <input id="rfq-company" style={contactStyles.input} required value={form.company} onChange={e=>setForm({...form, company:e.target.value})}/>
               </div>
             </div>
-            <div style={contactStyles.twoCol}>
+            <div className="rfq-two-col" style={contactStyles.twoCol}>
               <div style={contactStyles.row}>
                 <label htmlFor="rfq-email" style={contactStyles.label}>{t('rfq_email')}</label>
                 <input id="rfq-email" type="email" style={contactStyles.input} required value={form.email} onChange={e=>setForm({...form, email:e.target.value})}/>
@@ -111,7 +111,7 @@ function Contact({ t, lang }) {
                 <input id="rfq-phone" style={contactStyles.input} required placeholder="+62" value={form.phone} onChange={e=>setForm({...form, phone:e.target.value})}/>
               </div>
             </div>
-            <div style={contactStyles.twoCol}>
+            <div className="rfq-two-col" style={contactStyles.twoCol}>
               <div style={contactStyles.row}>
                 <label htmlFor="rfq-type" style={contactStyles.label}>{t('rfq_type')}</label>
                 <select id="rfq-type" style={contactStyles.input} value={form.type} onChange={e=>setForm({...form, type:e.target.value})}>
