@@ -1,4 +1,5 @@
 // blog_faq.jsx — Blog teasers + FAQ accordion
+import React from 'react'
 const blogStyles = {
   wrap: { padding: '120px 0', background: 'var(--paper-2)' },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 56 },
@@ -123,4 +124,4 @@ function FAQ({ t, lang }) {
   );
 }
 
-Object.assign(window, { Blog, FAQ });
+export { Blog, FAQ };

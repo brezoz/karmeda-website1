@@ -137,8 +137,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'"/>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"/></noscript>
 
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css"/>
+  <!-- Stylesheet loaded via main.jsx -->
   
   <style>
     @keyframes scroll-left {
@@ -218,21 +217,6 @@
 <body>
   <div id="root"></div>
 
-  <!-- React Production Build - Faster & Smaller -->
-  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
-
-  <!-- Components -->
-  <script type="text/babel" src="components/i18n.jsx"></script>
-  <script type="text/babel" src="components/nav.jsx"></script>
-  <script type="text/babel" src="components/hero.jsx"></script>
-  <script type="text/babel" src="components/about.jsx"></script>
-  <script type="text/babel" src="components/products.jsx"></script>
-  <script type="text/babel" src="components/process.jsx"></script>
-  <script type="text/babel" src="components/calculator.jsx"></script>
-  <script type="text/babel" src="components/blog_faq.jsx"></script>
-  <script type="text/babel" src="components/contact.jsx"></script>
-  <script type="text/babel" src="components/app.jsx"></script>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

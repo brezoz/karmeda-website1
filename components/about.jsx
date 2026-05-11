@@ -1,4 +1,5 @@
 // about.jsx — About + values section
+import React from 'react'
 const aboutStyles = {
   wrap: { padding: '120px 0', background: 'var(--paper-2)' },
   grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'flex-start' },
@@ -164,4 +165,4 @@ function About({ t }) {
   );
 }
 
-Object.assign(window, { About });
+export default About;

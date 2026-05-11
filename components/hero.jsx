@@ -1,4 +1,5 @@
 // hero.jsx — 3 hero variants toggleable via Tweaks
+import React from 'react'
 const heroStyles = {
   // Variant A: Editorial split
   splitWrap: { padding: '60px 0 100px', overflow: 'hidden' },
@@ -264,4 +265,4 @@ function Marquee({ t }) {
   );
 }
 
-Object.assign(window, { Hero, Marquee, HeroStats });
+export { Hero, Marquee };

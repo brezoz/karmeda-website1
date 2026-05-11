@@ -1,4 +1,5 @@
 // calculator.jsx — Price estimator + Measurement form
+import React from 'react'
 const calcStyles = {
   wrap: { padding: '120px 0', background: 'var(--paper-2)' },
   grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, marginTop: 56, alignItems: 'flex-start' },
@@ -981,4 +982,4 @@ function PromoBanner({ lang }) {
   );
 }
 
-Object.assign(window, { Calculator, Measurement, PromoBanner, PantDiagram });
+export { Calculator, Measurement };

@@ -1,4 +1,5 @@
 // process.jsx — Production process steps + Portfolio
+import React from 'react'
 const processStyles = {
   wrap: { padding: '64px 0', background: 'var(--ink-900)', color: 'var(--paper)' },
   grid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginTop: 32 },
@@ -223,4 +224,4 @@ function TestiSlider({ lang }) {
   );
 }
 
-Object.assign(window, { Process, Portfolio });
+export { Process, Portfolio };

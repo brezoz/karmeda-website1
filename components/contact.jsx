@@ -1,4 +1,5 @@
 // contact.jsx — RFQ form + Footer
+import React from 'react'
 const contactStyles = {
   wrap: { padding: '120px 0', background: 'var(--ink-900)', color: 'var(--paper)' },
   grid: { display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'flex-start' },
@@ -208,4 +209,4 @@ function Footer({ t }) {
   );
 }
 
-Object.assign(window, { Contact, Footer });
+export { Contact, Footer };

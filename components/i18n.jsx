@@ -214,4 +214,4 @@ const I18N = {
   }
 };
 
-window.I18N = I18N;
+export default I18N;

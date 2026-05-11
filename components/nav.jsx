@@ -1,4 +1,5 @@
 // nav.jsx — Header with bilingual + logo
+import React from 'react'
 function Logo({ size = 36 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" fill="none">
@@ -81,4 +82,4 @@ function Nav({ lang, setLang, t }) {
   );
 }
 
-Object.assign(window, { Nav, Logo });
+export default Nav;

@@ -1,4 +1,14 @@
 // app.jsx — Root composition + Tweaks panel
+import React from 'react'
+import I18N from './i18n.jsx'
+import Nav from './nav.jsx'
+import { Hero, Marquee } from './hero.jsx'
+import About from './about.jsx'
+import Products from './products.jsx'
+import { Process, Portfolio } from './process.jsx'
+import { Calculator, Measurement } from './calculator.jsx'
+import { Blog, FAQ } from './blog_faq.jsx'
+import { Contact, Footer } from './contact.jsx'
 const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
   "heroVariant": "split",
   "primaryColor": "#36B54C",
@@ -13,7 +23,7 @@ function App() {
   const [editMode, setEditMode] = React.useState(false);
 
   const t = (key) => {
-    const val = window.I18N[lang][key];
+    const val = I18N[lang][key];
     return val !== undefined ? val : key;
   };
 
@@ -116,4 +126,4 @@ function App() {
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+export default App;

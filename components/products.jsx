@@ -1,4 +1,5 @@
 // products.jsx — Catalog with categories
+import React from 'react'
 const productStyles = {
   wrap: { padding: '120px 0' },
   tabs: { display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 40 },
@@ -274,4 +275,4 @@ function Products({ t, lang }) {
   );
 }
 
-Object.assign(window, { Products });
+export default Products;
