@@ -524,7 +524,9 @@ function SizeFinder({ lang }) {
           }}>{txt.sub}</p>
 
           <div style={{position:'relative'}}>
+            <label htmlFor="size-weight" style={{position:'absolute',width:1,height:1,overflow:'hidden',clip:'rect(0,0,0,0)'}}>Berat badan</label>
             <input
+              id="size-weight"
               type="number"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}

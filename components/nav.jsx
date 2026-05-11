@@ -67,8 +67,8 @@ function Nav({ lang, setLang, t }) {
         </nav>
         <div className="nav-right">
           <div className="lang-toggle">
-            <button className={lang === 'id' ? 'active' : ''} onClick={() => setLang('id')}>ID</button>
-            <button className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
+            <button aria-label="Bahasa Indonesia" className={lang === 'id' ? 'active' : ''} onClick={() => setLang('id')}>ID</button>
+            <button aria-label="English" className={lang === 'en' ? 'active' : ''} onClick={() => setLang('en')}>EN</button>
           </div>
           <a href="#contact" className="btn btn-primary nav-cta" style={{padding: '10px 16px', fontSize: 13}}>
             <span className="nav-cta-full">{t('nav_cta')}</span>

@@ -91,28 +91,28 @@ function Contact({ t, lang }) {
           <form style={contactStyles.form} onSubmit={submit}>
             <div style={contactStyles.twoCol}>
               <div style={contactStyles.row}>
-                <div style={contactStyles.label}>{t('rfq_name')}</div>
-                <input style={contactStyles.input} required value={form.name} onChange={e=>setForm({...form, name:e.target.value})}/>
+                <label htmlFor="rfq-name" style={contactStyles.label}>{t('rfq_name')}</label>
+                <input id="rfq-name" style={contactStyles.input} required value={form.name} onChange={e=>setForm({...form, name:e.target.value})}/>
               </div>
               <div style={contactStyles.row}>
-                <div style={contactStyles.label}>{t('rfq_company')}</div>
-                <input style={contactStyles.input} required value={form.company} onChange={e=>setForm({...form, company:e.target.value})}/>
-              </div>
-            </div>
-            <div style={contactStyles.twoCol}>
-              <div style={contactStyles.row}>
-                <div style={contactStyles.label}>{t('rfq_email')}</div>
-                <input type="email" style={contactStyles.input} required value={form.email} onChange={e=>setForm({...form, email:e.target.value})}/>
-              </div>
-              <div style={contactStyles.row}>
-                <div style={contactStyles.label}>{t('rfq_phone')}</div>
-                <input style={contactStyles.input} required placeholder="+62" value={form.phone} onChange={e=>setForm({...form, phone:e.target.value})}/>
+                <label htmlFor="rfq-company" style={contactStyles.label}>{t('rfq_company')}</label>
+                <input id="rfq-company" style={contactStyles.input} required value={form.company} onChange={e=>setForm({...form, company:e.target.value})}/>
               </div>
             </div>
             <div style={contactStyles.twoCol}>
               <div style={contactStyles.row}>
-                <div style={contactStyles.label}>{t('rfq_type')}</div>
-                <select style={contactStyles.input} value={form.type} onChange={e=>setForm({...form, type:e.target.value})}>
+                <label htmlFor="rfq-email" style={contactStyles.label}>{t('rfq_email')}</label>
+                <input id="rfq-email" type="email" style={contactStyles.input} required value={form.email} onChange={e=>setForm({...form, email:e.target.value})}/>
+              </div>
+              <div style={contactStyles.row}>
+                <label htmlFor="rfq-phone" style={contactStyles.label}>{t('rfq_phone')}</label>
+                <input id="rfq-phone" style={contactStyles.input} required placeholder="+62" value={form.phone} onChange={e=>setForm({...form, phone:e.target.value})}/>
+              </div>
+            </div>
+            <div style={contactStyles.twoCol}>
+              <div style={contactStyles.row}>
+                <label htmlFor="rfq-type" style={contactStyles.label}>{t('rfq_type')}</label>
+                <select id="rfq-type" style={contactStyles.input} value={form.type} onChange={e=>setForm({...form, type:e.target.value})}>
                   <option value="">—</option>
                   <option>PDH / PDL</option>
                   <option>Polo Shirt</option>
@@ -123,17 +123,17 @@ function Contact({ t, lang }) {
                 </select>
               </div>
               <div style={contactStyles.row}>
-                <div style={contactStyles.label}>{t('rfq_qty')}</div>
-                <input style={contactStyles.input} placeholder="50 - 1000+" value={form.qty} onChange={e=>setForm({...form, qty:e.target.value})}/>
+                <label htmlFor="rfq-qty" style={contactStyles.label}>{t('rfq_qty')}</label>
+                <input id="rfq-qty" style={contactStyles.input} placeholder="50 - 1000+" value={form.qty} onChange={e=>setForm({...form, qty:e.target.value})}/>
               </div>
             </div>
             <div style={contactStyles.row}>
-              <div style={contactStyles.label}>{t('rfq_deadline')}</div>
-              <input type="date" style={contactStyles.input} value={form.deadline} onChange={e=>setForm({...form, deadline:e.target.value})}/>
+              <label htmlFor="rfq-deadline" style={contactStyles.label}>{t('rfq_deadline')}</label>
+              <input id="rfq-deadline" type="date" style={contactStyles.input} value={form.deadline} onChange={e=>setForm({...form, deadline:e.target.value})}/>
             </div>
             <div style={contactStyles.row}>
-              <div style={contactStyles.label}>{t('rfq_message')}</div>
-              <textarea rows="4" style={{...contactStyles.input, resize: 'vertical'}} value={form.message} onChange={e=>setForm({...form, message:e.target.value})}/>
+              <label htmlFor="rfq-message" style={contactStyles.label}>{t('rfq_message')}</label>
+              <textarea id="rfq-message" rows="4" style={{...contactStyles.input, resize: 'vertical'}} value={form.message} onChange={e=>setForm({...form, message:e.target.value})}/>
             </div>
             <button type="submit" className="btn btn-green" style={{width:'100%', justifyContent:'center', marginTop: 8}}>
               {sent ? '✓ Mengarahkan ke WhatsApp...' : t('rfq_send')} →

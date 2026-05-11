@@ -41,7 +41,7 @@ function Blog({ t, lang }) {
             <a key={i} href={p.href || '#blog'} style={{textDecoration:'none', color:'inherit', display:'block'}} className="card" >
               <article style={blogStyles.card}>
                 {p.img
-                  ? <img src={p.img} alt={p.title} style={{...blogStyles.img, width:'100%', objectFit:'cover', display:'block'}} />
+                  ? <img src={p.img} alt={p.title} loading="lazy" decoding="async" style={{...blogStyles.img, width:'100%', objectFit:'cover', display:'block'}} />
                   : <div className={`ph ${p.tone}`} style={blogStyles.img}>{p.cat.toUpperCase()}</div>
                 }
                 <div style={blogStyles.body}>

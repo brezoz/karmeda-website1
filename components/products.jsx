@@ -97,7 +97,7 @@ function ProductSlider({ images, style, interval }) {
   if (total === 1) {
     return (
       <div style={{ ...style, overflow: 'hidden' }}>
-        <img src={images[0]} alt="foto produk" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: '#f8f7f4' }} />
+        <img src={images[0]} alt="foto produk" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block', background: '#f8f7f4' }} />
       </div>
     );
   }
@@ -119,7 +119,7 @@ function ProductSlider({ images, style, interval }) {
       onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}
     >
       {images.map((src, i) => (
-        <img key={i} src={src} alt={`foto ${i+1}`} style={{
+        <img key={i} src={src} alt={`foto ${i+1}`} loading="lazy" decoding="async" style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
           objectFit: 'contain', background: '#f8f7f4',
@@ -128,8 +128,8 @@ function ProductSlider({ images, style, interval }) {
         }} />
       ))}
       {/* arrows */}
-      <button style={arrowBtn('left')} onClick={e => { e.stopPropagation(); setCur(c => (c - 1 + total) % total); }}>‹</button>
-      <button style={arrowBtn('right')} onClick={e => { e.stopPropagation(); setCur(c => (c + 1) % total); }}>›</button>
+      <button aria-label="Foto sebelumnya" style={arrowBtn('left')} onClick={e => { e.stopPropagation(); setCur(c => (c - 1 + total) % total); }}>‹</button>
+      <button aria-label="Foto berikutnya" style={arrowBtn('right')} onClick={e => { e.stopPropagation(); setCur(c => (c + 1) % total); }}>›</button>
       {/* dot indicators */}
       <div style={{ position: 'absolute', bottom: 8, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 5, zIndex: 2 }}>
         {images.map((_, i) => (
