@@ -129,10 +129,6 @@ function Portfolio({ t, lang }) {
           </div>
           )}
         </div>
-        <div style={portfolioStyles.caseGrid} className="case-grid">
-          {[]}
-        </div>
-
         {/* Testimoni Slider */}
         <TestiSlider lang={lang} />
 

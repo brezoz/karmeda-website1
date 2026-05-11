@@ -384,7 +384,7 @@ section { scroll-margin-top: 88px; }
   background: white;
   font-size: 12px;
   font-weight: 500;
-  color: var(--ink-600);
+  color: var(--ink-500);
   cursor: pointer;
   transition: all 0.15s;
   font-family: inherit;
@@ -587,7 +587,6 @@ section { scroll-margin-top: 88px; }
   .nav-sub-hide { display: none; }
   .nav { height: 60px; }
   body { padding-top: 60px; }
-  .scroll-top { bottom: 88px; }
 
   /* Section padding */
   section, .calc-wrap { padding: 72px 0 !important; }

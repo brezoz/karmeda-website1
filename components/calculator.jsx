@@ -381,7 +381,7 @@ function SpecialPriceCard({ lang, qty }) {
         fontSize: 10,
         fontFamily: 'var(--font-mono)',
         letterSpacing: '0.14em',
-        color: 'var(--green-300)',
+        color: 'var(--green-200)',
         padding: '6px 10px',
         border: '1px solid var(--green-500)',
         borderRadius: 999,
@@ -403,7 +403,7 @@ function SpecialPriceCard({ lang, qty }) {
       }}>{txt.body}</div>
       <div style={{
         fontSize: 14,
-        color: 'var(--green-300)',
+        color: 'var(--green-200)',
         marginBottom: 24,
         fontWeight: 500,
       }}>{txt.hint}</div>
