@@ -547,7 +547,7 @@ function getRecommendedPant(kg) {
 }
 
 function SizeFinder({ lang }) {
-  const [weight, setWeight] = React.useState('');
+  const [weight, setWeight] = React.useState('75');
   const kg = parseFloat(weight);
   const valid = !isNaN(kg) && kg > 0 && kg <= 200;
   const shirt = valid ? getRecommendedShirt(kg) : null;
