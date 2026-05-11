@@ -492,13 +492,13 @@ section { scroll-margin-top: 88px; }
   .calc-chips::-webkit-scrollbar { display: none; }
 }
 
-/* range slider hint — glowing track pulse */
-@keyframes sliderGlow {
-  0%, 100% { box-shadow: none; opacity: 1; }
-  40%       { box-shadow: 0 0 0 6px rgba(54,181,76,0.22); opacity: 0.9; }
+/* range slider hint — thumb pulse while sliding */
+@keyframes sliderPulse {
+  0%, 100% { transform: scaleX(1); }
+  50%       { transform: scaleX(1.01); filter: drop-shadow(0 0 6px rgba(54,181,76,0.5)); }
 }
 .slider-hint {
-  animation: sliderGlow 0.7s ease 0.3s both;
+  animation: sliderPulse 0.5s ease 0.5s 3 both;
 }
 
 /* product filter tab hint animation */

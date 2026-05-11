@@ -69,6 +69,8 @@ function Calculator({ t, lang }) {
   const [hintDone, setHintDone] = React.useState(false);
   const [inView, setInView] = React.useState(false);
   const sectionRef = React.useRef(null);
+  const typeScrollRef = React.useRef(null);
+  const chipsScrollRef = React.useRef(null);
 
   // Track in-view for sticky price bar
   React.useEffect(() => {
@@ -79,6 +81,21 @@ function Calculator({ t, lang }) {
     return () => obs.disconnect();
   }, []);
 
+  // Smooth scroll helper for hint
+  const smoothScroll = (el, target, duration) => {
+    const start = el.scrollLeft;
+    const dist = target - start;
+    const startTime = performance.now();
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const p = Math.min(elapsed / duration, 1);
+      const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p; // easeInOut
+      el.scrollLeft = start + dist * ease;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
   React.useEffect(() => {
     if (hintDone) return;
     const el = sectionRef.current;
@@ -86,28 +103,52 @@ function Calculator({ t, lang }) {
     const obs = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         obs.disconnect();
-        // 1) pop all buttons
+
+        // Step 1 (0ms): pop buttons
         setHint(true);
-        // 2) animate slider: 100 → 500 → 100 over ~1.4s
-        const origQty = 100;
-        const peak = 500;
-        const steps = 28;
-        let step = 0;
-        const iv = setInterval(() => {
-          step++;
-          if (step <= steps / 2) {
-            setQty(Math.round(origQty + ((peak - origQty) * step) / (steps / 2)));
-          } else {
-            setQty(Math.round(peak - ((peak - origQty) * (step - steps / 2)) / (steps / 2)));
+
+        // Step 2 (300ms): scroll type buttons right to reveal hidden items
+        setTimeout(() => {
+          const ts = typeScrollRef.current;
+          if (ts) {
+            smoothScroll(ts, 120, 500);          // scroll right
+            setTimeout(() => smoothScroll(ts, 0, 500), 800); // scroll back
           }
-          if (step >= steps) {
-            clearInterval(iv);
-            setQty(origQty);
-            setTimeout(() => { setHint(false); setHintDone(true); }, 400);
+        }, 300);
+
+        // Step 3 (500ms): animate slider 100 → 800 → 100
+        setTimeout(() => {
+          const origQty = 100;
+          const peak = 800;
+          const steps = 32;
+          let step = 0;
+          const iv = setInterval(() => {
+            step++;
+            if (step <= steps / 2) {
+              setQty(Math.round(origQty + ((peak - origQty) * step) / (steps / 2)));
+            } else {
+              setQty(Math.round(peak - ((peak - origQty) * (step - steps / 2)) / (steps / 2)));
+            }
+            if (step >= steps) {
+              clearInterval(iv);
+              setQty(origQty);
+            }
+          }, 45);
+        }, 500);
+
+        // Step 4 (1600ms): scroll chips right to reveal hidden
+        setTimeout(() => {
+          const cs = chipsScrollRef.current;
+          if (cs) {
+            smoothScroll(cs, 100, 400);
+            setTimeout(() => smoothScroll(cs, 0, 400), 700);
           }
-        }, 50);
+        }, 1600);
+
+        // Step 5 (2400ms): done
+        setTimeout(() => { setHint(false); setHintDone(true); }, 2400);
       }
-    }, { threshold: 0.45 });
+    }, { threshold: 0.4 });
     obs.observe(el);
     return () => obs.disconnect();
   }, [hintDone]);
@@ -162,7 +203,7 @@ function Calculator({ t, lang }) {
             {/* JENIS — horizontal scroll chips */}
             <div style={calcStyles.row}>
               <div style={calcStyles.label}>{t('calc_type')}</div>
-              <div className="calc-type-scroll">
+              <div className="calc-type-scroll" ref={typeScrollRef}>
                 {data.types.map((ty, i) => (
                   <button key={ty.id}
                     className={`calc-type-btn${type===ty.id?' active':''}${hint?' tab-hint':''}`}
@@ -205,7 +246,7 @@ function Calculator({ t, lang }) {
             {/* TAMBAHAN — compact chips */}
             <div style={{...calcStyles.row, marginBottom:0}}>
               <div style={calcStyles.label}>{t('calc_extras')}</div>
-              <div className="calc-chips">
+              <div className="calc-chips" ref={chipsScrollRef}>
                 {[
                   ['emb', t('calc_extra_emb'), 15],
                   ['print', t('calc_extra_print'), 12],
