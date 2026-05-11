@@ -479,35 +479,17 @@ section { scroll-margin-top: 88px; }
     box-shadow: 0 2px 16px rgba(0,0,0,0.07);
   }
 
-  /* Horizontal scroll rows: bleed to card edges (fix WebKit/Safari border-radius clip) */
+  /* Horizontal scroll rows — stay within card padding, no bleed */
   .calc-type-scroll {
-    margin-left: -16px !important;
-    margin-right: -16px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-right: 4px !important;
   }
   .calc-chips {
     flex-wrap: nowrap !important;
     overflow-x: auto;
-    margin-left: -16px !important;
-    margin-right: -16px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-right: 4px !important;
     scrollbar-width: none;
   }
   .calc-chips::-webkit-scrollbar { display: none; }
-
-  /* Add right-fade to show scrollable hint */
-  .calc-type-scroll::after,
-  .calc-chips::after {
-    content: '';
-    position: sticky;
-    right: 0;
-    width: 32px;
-    flex-shrink: 0;
-    background: linear-gradient(to right, transparent, white);
-    pointer-events: none;
-  }
 }
 
 /* range slider hint — glowing track pulse */
