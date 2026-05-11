@@ -21,6 +21,13 @@ function App() {
   const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULS);
   const [tweaksOpen, setTweaksOpen] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
+  const [showTop, setShowTop] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const t = (key) => {
     const val = I18N[lang][key];
@@ -85,6 +92,13 @@ function App() {
         <Contact t={t} lang={lang}/>
       </main>
       <Footer t={t}/>
+
+      {/* Scroll to top */}
+      <button
+        className={`scroll-top ${showTop ? 'visible' : ''}`}
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll ke atas"
+      >↑</button>
 
       {/* WhatsApp float */}
       <a href={`https://wa.me/628170012500?text=${encodeURIComponent('Halo pak Marchel - PT. Karmeda saya dapat info dari Web, mau tanya tentang seragam ............')}`} target="_blank" rel="noreferrer" className="wa-float" aria-label="Chat WhatsApp dengan Karmeda">
