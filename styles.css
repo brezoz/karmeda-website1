@@ -459,20 +459,53 @@ section { scroll-margin-top: 88px; }
   /* Show sticky bar */
   .calc-sticky-bar { display: flex; }
 
-  /* Stack: sticky bar (0) → WA float (76px) → scroll-top (146px) */
+  /* Stack: sticky bar (0) → WA float (76px) → scroll-top (148px) */
   .wa-float    { bottom: 76px !important; }
   .scroll-top  { bottom: 148px !important; right: 16px; }
 
-  /* Ensure sticky bar CTA doesn't get cut */
+  /* Sticky bar */
   .calc-sticky-bar  { padding: 10px 16px; }
   .calc-sticky-cta  { flex-shrink: 0; font-size: 12px; padding: 9px 14px; }
   .calc-sticky-total { font-size: 18px; }
 
-  /* Calculator section bottom padding accounts for sticky bar */
+  /* Calculator section bottom padding */
   #calculator { padding-bottom: 96px !important; }
 
-  /* Compact card padding */
-  .calc-form-card { padding: 20px !important; }
+  /* Card: tighter padding */
+  .calc-form-card {
+    padding: 16px !important;
+    overflow: hidden;
+  }
+
+  /* Horizontal scroll rows: bleed to card edges (fix WebKit/Safari border-radius clip) */
+  .calc-type-scroll {
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  .calc-chips {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    scrollbar-width: none;
+  }
+  .calc-chips::-webkit-scrollbar { display: none; }
+
+  /* Add right-fade to show scrollable hint */
+  .calc-type-scroll::after,
+  .calc-chips::after {
+    content: '';
+    position: sticky;
+    right: 0;
+    width: 32px;
+    flex-shrink: 0;
+    background: linear-gradient(to right, transparent, white);
+    pointer-events: none;
+  }
 }
 
 /* range slider hint — glowing track pulse */
