@@ -471,10 +471,12 @@ section { scroll-margin-top: 88px; }
   /* Calculator section bottom padding */
   #calculator { padding-bottom: 96px !important; }
 
-  /* Card: tighter padding */
+  /* Card: tighter padding, remove border (causes visible line with negative margins) */
   .calc-form-card {
     padding: 16px !important;
     overflow: hidden;
+    border: none !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
   }
 
   /* Horizontal scroll rows: bleed to card edges (fix WebKit/Safari border-radius clip) */
