@@ -156,7 +156,18 @@ function Products({ t, lang }) {
   const [visible, setVisible] = React.useState(3);
   const [tabsHint, setTabsHint] = React.useState(false);
   const [hintDone, setHintDone] = React.useState(false);
+  const [inView, setInView] = React.useState(false);
   const tabsRef = React.useRef(null);
+  const sectionRef = React.useRef(null);
+
+  // Sticky bar visibility
+  React.useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.05 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const cats = lang === 'id' ? CATEGORIES_ID : CATEGORIES_EN;
   const filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
@@ -183,7 +194,7 @@ function Products({ t, lang }) {
   React.useEffect(() => { setVisible(3); }, [cat]);
 
   return (
-    <section id="products" style={productStyles.wrap}>
+    <section id="products" ref={sectionRef} style={productStyles.wrap}>
       <div className="container">
         <div className="section-head">
           <div className="eyebrow">{t('products_eyebrow')}</div>
@@ -300,6 +311,27 @@ function Products({ t, lang }) {
         )}
       </div>
 
+      {/* Sticky category bar — mobile only */}
+      <div className={`prod-sticky-bar${inView ? ' visible' : ''}`}>
+        <div className="prod-sticky-label">
+          {lang === 'id' ? 'Kategori' : 'Category'}
+        </div>
+        <div className="prod-sticky-scroll">
+          {cats.map(c => (
+            <button
+              key={c.id}
+              className={`prod-sticky-btn${cat === c.id ? ' active' : ''}`}
+              onClick={() => {
+                setCat(c.id);
+                // scroll to top of products section
+                sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
