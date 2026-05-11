@@ -64,6 +64,54 @@ function Calculator({ t, lang }) {
   const [extras, setExtras] = React.useState({ emb: true, print: false, name: true, pack: false });
   const EXTRA_PRICE = { emb: 15, print: 12, name: 8, pack: 5 };
 
+  // Hint animations — run once on first scroll into view
+  const [hint, setHint] = React.useState(false);
+  const [hintDone, setHintDone] = React.useState(false);
+  const [inView, setInView] = React.useState(false);
+  const sectionRef = React.useRef(null);
+
+  // Track in-view for sticky price bar
+  React.useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => setInView(e.isIntersecting), { threshold: 0.05 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  React.useEffect(() => {
+    if (hintDone) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        obs.disconnect();
+        // 1) pop all buttons
+        setHint(true);
+        // 2) animate slider: 100 → 500 → 100 over ~1.4s
+        const origQty = 100;
+        const peak = 500;
+        const steps = 28;
+        let step = 0;
+        const iv = setInterval(() => {
+          step++;
+          if (step <= steps / 2) {
+            setQty(Math.round(origQty + ((peak - origQty) * step) / (steps / 2)));
+          } else {
+            setQty(Math.round(peak - ((peak - origQty) * (step - steps / 2)) / (steps / 2)));
+          }
+          if (step >= steps) {
+            clearInterval(iv);
+            setQty(origQty);
+            setTimeout(() => { setHint(false); setHintDone(true); }, 400);
+          }
+        }, 50);
+      }
+    }, { threshold: 0.45 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [hintDone]);
+
   const baseType = data.types.find(x => x.id === type);
   const fab = data.fabrics.find(x => x.id === fabric);
   const extraTotal = Object.entries(extras).reduce((sum, [k, v]) => sum + (v ? EXTRA_PRICE[k] : 0), 0);
@@ -102,7 +150,7 @@ function Calculator({ t, lang }) {
   );
 
   return (
-    <section id="calculator" style={calcStyles.wrap}>
+    <section id="calculator" ref={sectionRef} style={calcStyles.wrap}>
       <div className="container">
         <div className="section-head">
           <div className="eyebrow">{t('calc_eyebrow')}</div>
@@ -110,68 +158,67 @@ function Calculator({ t, lang }) {
           <p className="lead" style={{fontSize: 15}}>{t('calc_sub')}</p>
         </div>
         <div style={calcStyles.grid} className="calc-grid">
-          <div style={calcStyles.card}>
+          <div style={calcStyles.card} className="calc-form-card">
+            {/* JENIS — horizontal scroll chips */}
             <div style={calcStyles.row}>
               <div style={calcStyles.label}>{t('calc_type')}</div>
-              <div className="calc-type-grid" style={{...calcStyles.segGrid, gridTemplateColumns: 'repeat(3, 1fr)'}}>
-                {data.types.map(ty => (
-                  <button key={ty.id} style={{...calcStyles.segBtn, ...(type===ty.id?calcStyles.segActive:{})}} onClick={()=>setType(ty.id)}>
+              <div className="calc-type-scroll">
+                {data.types.map((ty, i) => (
+                  <button key={ty.id}
+                    className={`calc-type-btn${type===ty.id?' active':''}${hint?' tab-hint':''}`}
+                    style={{animationDelay: hint ? `${i*90}ms` : '0ms'}}
+                    onClick={()=>setType(ty.id)}>
                     {ty.label}
                   </button>
                 ))}
               </div>
             </div>
+
+            {/* SLIDER */}
             <div style={calcStyles.row}>
-              <div style={calcStyles.label}>{t('calc_qty')}: <span style={{color:'var(--green-600)', fontSize:14}}>{qty} pcs</span></div>
-              <input type="range" min="0" max="1000" step="1" value={Math.round(qtyToPos(qty) * 1000)} onChange={e=>setQty(stepQty(+e.target.value / 1000))} style={{accentColor:'var(--green-500)', width:'100%', display:'block'}}/>
-              <div style={{position:'relative', height: 18, fontSize: 11, fontFamily:'var(--font-mono)', color:'var(--ink-400)', marginTop: 4}}>
-                {[
-                  [30, '30'],
-                  [1000, '1000'],
-                  [2000, '2000'],
-                  [5000, '5000'],
-                  [7500, '7500'],
-                  [10000, '10.000+'],
-                ].map(([val, lbl], i, arr) => {
-                  const pct = qtyToPos(val) * 100;
-                  const isFirst = i === 0;
-                  const isLast = i === arr.length - 1;
-                  return (
-                    <span key={val} style={{
-                      position:'absolute',
-                      left: `${pct}%`,
-                      transform: isFirst ? 'translateX(0)' : isLast ? 'translateX(-100%)' : 'translateX(-50%)',
-                      whiteSpace: 'nowrap',
-                    }}>{lbl}</span>
-                  );
-                })}
+              <div style={calcStyles.label}>{t('calc_qty')}: <span style={{color:'var(--green-600)', fontWeight:700}}>{qty} pcs</span></div>
+              <input type="range" min="0" max="1000" step="1"
+                className={hint ? 'slider-hint' : ''}
+                value={Math.round(qtyToPos(qty) * 1000)}
+                onChange={e=>setQty(stepQty(+e.target.value / 1000))}
+                style={{accentColor:'var(--green-500)', width:'100%', display:'block'}}/>
+              <div style={{display:'flex', justifyContent:'space-between', fontSize:10, fontFamily:'var(--font-mono)', color:'var(--ink-400)', marginTop:3}}>
+                {['30','1K','2K','5K','10K+'].map(l => <span key={l}>{l}</span>)}
               </div>
             </div>
+
+            {/* KUALITAS */}
             <div style={calcStyles.row}>
               <div style={calcStyles.label}>{t('calc_fabric')}</div>
-              <div style={{...calcStyles.segGrid, gridTemplateColumns:'repeat(3, 1fr)'}}>
-                {data.fabrics.map(f => (
-                  <button key={f.id} style={{...calcStyles.segBtn, ...(fabric===f.id?calcStyles.segActive:{})}} onClick={()=>setFabric(f.id)}>
+              <div style={{display:'flex', gap:8}}>
+                {data.fabrics.map((f, i) => (
+                  <button key={f.id}
+                    className={hint ? 'tab-hint' : ''}
+                    style={{...calcStyles.segBtn, flex:1, textAlign:'center', ...(fabric===f.id?calcStyles.segActive:{}), animationDelay: hint ? `${600+i*90}ms` : '0ms'}}
+                    onClick={()=>setFabric(f.id)}>
                     {f.label}
                   </button>
                 ))}
               </div>
             </div>
-            <div style={calcStyles.row}>
+
+            {/* TAMBAHAN — compact chips */}
+            <div style={{...calcStyles.row, marginBottom:0}}>
               <div style={calcStyles.label}>{t('calc_extras')}</div>
-              <div className="calc-extras-grid" style={{display:'grid', gridTemplateColumns:'repeat(2,1fr)', gap: 8}}>
+              <div className="calc-chips">
                 {[
-                  ['emb', t('calc_extra_emb')],
-                  ['print', t('calc_extra_print')],
-                  ['name', t('calc_extra_name')],
-                  ['pack', t('calc_extra_pack')],
-                ].map(([k, l]) => (
-                  <div key={k} style={{...calcStyles.checkbox, ...(extras[k]?calcStyles.checkActive:{})}} onClick={()=>setExtras({...extras, [k]:!extras[k]})}>
-                    <div style={{width:18, height:18, borderRadius: 4, border: '1.5px solid '+(extras[k]?'var(--green-500)':'var(--ink-300)'), background: extras[k]?'var(--green-500)':'transparent', display:'grid', placeItems:'center', color:'white', fontSize: 11}}>
-                      {extras[k] ? '✓' : ''}
-                    </div>
-                    {l} <span style={{marginLeft:'auto', color:'var(--ink-400)', fontFamily:'var(--font-mono)', fontSize: 11}}>+Rp {(EXTRA_PRICE[k]*1000).toLocaleString('id-ID')}</span>
-                  </div>
+                  ['emb', t('calc_extra_emb'), 15],
+                  ['print', t('calc_extra_print'), 12],
+                  ['name', t('calc_extra_name'), 8],
+                  ['pack', t('calc_extra_pack'), 5],
+                ].map(([k, l, price], idx) => (
+                  <button key={k}
+                    className={`calc-chip${extras[k]?' active':''}${hint?' tab-hint':''}`}
+                    style={{animationDelay: hint ? `${900+idx*100}ms` : '0ms'}}
+                    onClick={()=>setExtras({...extras, [k]:!extras[k]})}>
+                    {extras[k] ? '✓ ' : ''}{l}
+                    <span className="calc-chip-price">+{price}rb</span>
+                  </button>
                 ))}
               </div>
             </div>
@@ -248,6 +295,18 @@ function Calculator({ t, lang }) {
         </div>
         <CalcNotes lang={lang} />
         <PromoBanner lang={lang} />
+      </div>
+
+      {/* Sticky price bar — mobile only */}
+      <div className={`calc-sticky-bar${inView ? ' visible' : ''}`}>
+        <div className="calc-sticky-info">
+          <div className="calc-sticky-total">{fmt(total)}</div>
+          <div className="calc-sticky-sub">{qty} pcs · {fmt(finalPerPc)}/pc</div>
+        </div>
+        <a href={`https://wa.me/628170012500?text=${waText}`} target="_blank" rel="noreferrer"
+          className="calc-sticky-cta">
+          Kirim WA →
+        </a>
       </div>
     </section>
   );
