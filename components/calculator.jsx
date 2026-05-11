@@ -109,8 +109,6 @@ function Calculator({ t, lang }) {
           <h2 className="h-1" style={{fontFamily: 'system-ui'}}>{t('calc_title')}</h2>
           <p className="lead" style={{fontSize: 15}}>{t('calc_sub')}</p>
         </div>
-        <PromoBanner lang={lang} />
-
         <div style={calcStyles.grid} className="calc-grid">
           <div style={calcStyles.card}>
             <div style={calcStyles.row}>
@@ -249,6 +247,7 @@ function Calculator({ t, lang }) {
           </div>
         </div>
         <CalcNotes lang={lang} />
+        <PromoBanner lang={lang} />
       </div>
     </section>
   );
