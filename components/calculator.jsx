@@ -20,7 +20,7 @@ const calcStyles = {
     position: 'sticky', top: 100,
   },
   totalLabel: { fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--green-200)' },
-  totalNum: { fontFamily: 'var(--font-display)', fontSize: 64, lineHeight: 1, marginTop: 8 },
+  totalNum: { fontFamily: 'var(--font-display)', fontSize: 64, lineHeight: 1, marginTop: 8, wordBreak: 'break-all' },
 };
 
 const PRICE_TABLE = {
