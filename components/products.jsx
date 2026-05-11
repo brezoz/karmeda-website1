@@ -154,9 +154,29 @@ function ProductSlider({ images, style, interval }) {
 function Products({ t, lang }) {
   const [cat, setCat] = React.useState('all');
   const [visible, setVisible] = React.useState(3);
+  const [tabsHint, setTabsHint] = React.useState(false);
+  const [hintDone, setHintDone] = React.useState(false);
+  const tabsRef = React.useRef(null);
+
   const cats = lang === 'id' ? CATEGORIES_ID : CATEGORIES_EN;
   const filtered = cat === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === cat);
   const isAll = cat === 'all';
+
+  // Trigger hint animation once when tabs enter viewport
+  React.useEffect(() => {
+    if (hintDone) return;
+    const el = tabsRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setTabsHint(true);
+        setTimeout(() => { setTabsHint(false); setHintDone(true); }, 2200);
+        obs.disconnect();
+      }
+    }, { threshold: 0.6 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [hintDone]);
   const shown = isAll ? filtered.slice(0, visible) : filtered;
   const hasMore = isAll && visible < filtered.length;
 
@@ -170,9 +190,18 @@ function Products({ t, lang }) {
           <h2 className="h-1" style={{fontFamily: 'system-ui'}}>{t('products_title')}</h2>
           <p className="lead">{t('products_sub')}</p>
         </div>
-        <div style={productStyles.tabs}>
-          {cats.map(c => (
-            <button key={c.id} style={{...productStyles.tab, ...(cat===c.id?productStyles.tabActive:{})}} onClick={() => setCat(c.id)}>
+        <div ref={tabsRef} style={productStyles.tabs}>
+          {cats.map((c, i) => (
+            <button
+              key={c.id}
+              className={tabsHint ? 'tab-hint' : ''}
+              style={{
+                ...productStyles.tab,
+                ...(cat===c.id ? productStyles.tabActive : {}),
+                animationDelay: tabsHint ? `${i * 80}ms` : '0ms',
+              }}
+              onClick={() => setCat(c.id)}
+            >
               {c.label}
             </button>
           ))}

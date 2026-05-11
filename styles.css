@@ -342,3 +342,14 @@ section { scroll-margin-top: 88px; }
   transition: all 0.2s;
 }
 .card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--green-200); }
+
+/* product filter tab hint animation */
+@keyframes tabPop {
+  0%   { transform: scale(1);    box-shadow: none; }
+  35%  { transform: scale(1.12); box-shadow: 0 0 0 4px rgba(54,181,76,0.25); border-color: var(--green-500); color: var(--green-700); }
+  65%  { transform: scale(1.06); box-shadow: 0 0 0 2px rgba(54,181,76,0.15); }
+  100% { transform: scale(1);    box-shadow: none; }
+}
+.tab-hint {
+  animation: tabPop 0.55s ease both;
+}
