@@ -235,6 +235,38 @@ section { scroll-margin-top: 88px; }
 .nav-links a { font-size: 14px; color: var(--ink-700); transition: color 0.15s; }
 .nav-links a:hover, .nav-links a.active { color: var(--green-600); }
 
+/* Mobile shortcut bar */
+.nav-shortcuts {
+  display: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 16px 9px;
+  gap: 7px;
+  border-top: 1px solid var(--ink-100);
+}
+.nav-shortcuts::-webkit-scrollbar { display: none; }
+.nav-shortcut-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  padding: 5px 13px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink-200);
+  background: white;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-700);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.nav-shortcut-btn:hover { border-color: var(--green-500); color: var(--green-600); }
+.nav-shortcut-btn.active {
+  background: var(--ink-900);
+  color: white;
+  border-color: var(--ink-900);
+}
+
 .nav-right { display: flex; align-items: center; gap: 16px; }
 .lang-toggle {
   display: flex; gap: 0;
@@ -586,7 +618,10 @@ section { scroll-margin-top: 88px; }
   .nav-links { display: none; }
   .nav-sub-hide { display: none; }
   .nav { height: 60px; }
-  body { padding-top: 60px; }
+  /* Show shortcut bar: 60px nav + 38px shortcuts = 98px total */
+  .nav-shortcuts { display: flex; }
+  body { padding-top: 98px; }
+  section { scroll-margin-top: 106px; }
 
   /* Section padding */
   section, .calc-wrap { padding: 72px 0 !important; }

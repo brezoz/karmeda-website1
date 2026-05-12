@@ -18,6 +18,7 @@ function Logo({ size = 36 }) {
 function Nav({ lang, setLang, t }) {
   const [scrolled, setScrolled] = React.useState(false);
   const [active, setActive] = React.useState('home');
+  const shortcutsRef = React.useRef(null);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -39,6 +40,15 @@ function Nav({ lang, setLang, t }) {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Auto-scroll shortcut bar to keep active chip visible
+  React.useEffect(() => {
+    if (!shortcutsRef.current) return;
+    const activeBtn = shortcutsRef.current.querySelector('.nav-shortcut-btn.active');
+    if (activeBtn) {
+      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [active]);
 
   const links = [
     { id: 'about', label: t('nav_about') },
@@ -77,6 +87,15 @@ function Nav({ lang, setLang, t }) {
             <span className="btn-arrow">→</span>
           </a>
         </div>
+      </div>
+
+      {/* Mobile shortcut bar — horizontal scroll chips, hidden on desktop */}
+      <div className="nav-shortcuts" ref={shortcutsRef}>
+        {links.map(l => (
+          <a key={l.id} href={`#${l.id}`} className={`nav-shortcut-btn${active === l.id ? ' active' : ''}`}>
+            {l.label}
+          </a>
+        ))}
       </div>
     </div>
   );
