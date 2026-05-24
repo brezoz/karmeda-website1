@@ -5,6 +5,20 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/lokasi/tangerang",        "destination": "/lokasi/konveksi-seragam-tangerang",          "permanent": true },
+    { "source": "/lokasi/tangerang.html",   "destination": "/lokasi/konveksi-seragam-tangerang",          "permanent": true },
+    { "source": "/lokasi/tangsel",          "destination": "/lokasi/konveksi-seragam-tangerang-selatan",  "permanent": true },
+    { "source": "/lokasi/tangsel.html",     "destination": "/lokasi/konveksi-seragam-tangerang-selatan",  "permanent": true },
+    { "source": "/lokasi/jakarta",          "destination": "/lokasi/konveksi-seragam-jakarta",            "permanent": true },
+    { "source": "/lokasi/jakarta.html",     "destination": "/lokasi/konveksi-seragam-jakarta",            "permanent": true },
+    { "source": "/lokasi/bekasi",           "destination": "/lokasi/konveksi-seragam-bekasi",             "permanent": true },
+    { "source": "/lokasi/bekasi.html",      "destination": "/lokasi/konveksi-seragam-bekasi",             "permanent": true },
+    { "source": "/lokasi/bogor",            "destination": "/lokasi/konveksi-seragam-bogor",              "permanent": true },
+    { "source": "/lokasi/bogor.html",       "destination": "/lokasi/konveksi-seragam-bogor",              "permanent": true },
+    { "source": "/lokasi/depok",            "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true },
+    { "source": "/lokasi/depok.html",       "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
