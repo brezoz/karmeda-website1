@@ -18,7 +18,9 @@
     { "source": "/lokasi/bogor.html",       "destination": "/lokasi/konveksi-seragam-bogor",              "permanent": true },
     { "source": "/lokasi/depok",            "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true },
     { "source": "/lokasi/depok.html",       "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true },
-    { "source": "/blog/bikin-seragam-kerja-tangerang.html", "destination": "/blog/bikin-seragam-kerja-tangerang", "permanent": true }
+    { "source": "/blog/bikin-seragam-kerja-tangerang.html", "destination": "/blog/bikin-seragam-kerja-tangerang", "permanent": true },
+    { "source": "/seragam-rapih-4/",                       "destination": "/",                                    "permanent": true },
+    { "source": "/seragam-rapih-4",                        "destination": "/",                                    "permanent": true }
   ],
   "rewrites": [
     { "source": "/blog/bikin-seragam-kerja-tangerang", "destination": "/blog/bikin-seragam-kerja-tangerang.html" }
