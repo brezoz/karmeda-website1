@@ -52,8 +52,8 @@
         });
       }
     });
-    // Load GTM only after page is fully loaded
-    window.addEventListener('load', function() {
+    // Load GTM only after page is idle — avoids forced reflow on main thread
+    function _loadGTM() {
       var s = document.createElement('script');
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2VBRT6ENN';
       s.async = true;
@@ -65,7 +65,12 @@
         });
       };
       document.head.appendChild(s);
-    });
+    }
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(_loadGTM, { timeout: 4000 });
+    } else {
+      setTimeout(_loadGTM, 3000);
+    }
   </script>
 
   <!-- Enhanced @graph Schema: LocalBusiness + Products -->
@@ -249,7 +254,7 @@
   </script>
   
   <!-- Preload LCP image -->
-  <link rel="preload" as="image" href="assets/hero1.jpeg" fetchpriority="high"/>
+  <link rel="preload" as="image" href="assets/hero1.webp" fetchpriority="high" type="image/webp"/>
 
   <!-- DNS prefetch for CDN -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
@@ -349,7 +354,7 @@
     transition:opacity 0.25s ease;
   ">
     <img
-      src="assets/hero1.jpeg"
+      src="assets/hero1.webp"
       alt=""
       fetchpriority="high"
       decoding="sync"

@@ -1,6 +1,6 @@
 // hero.jsx — 3 hero variants toggleable via Tweaks
 import React from 'react'
-import heroImg from '../assets/hero1.jpeg'
+import heroImg from '../assets/hero1.webp'
 const heroStyles = {
   // Variant A: Editorial split
   splitWrap: { padding: '60px 0 100px', overflow: 'hidden' },
