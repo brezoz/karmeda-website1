@@ -55,6 +55,25 @@
     .article-wrap ul, .article-wrap ol { padding-left: 24px; margin-bottom: 18px; }
     .article-wrap li { font-size: 16px; color: var(--ink-700); margin-bottom: 8px; line-height: 1.7; }
     .article-wrap strong { color: var(--ink-900); }
+    .article-wrap a { color: var(--green-600); }
+    .article-img { width: 100%; border-radius: var(--radius); margin: 32px 0; object-fit: cover; max-height: 420px; display: block; }
+    .img-caption { font-size: 13px; color: var(--ink-500); text-align: center; margin-top: -24px; margin-bottom: 32px; }
+    .img-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
+    .img-2col img { width: 100%; border-radius: var(--radius); object-fit: cover; height: 240px; }
+    .mid-cta { background: var(--green-50); border: 1px solid var(--green-500); border-radius: var(--radius); padding: 28px 32px; margin: 40px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .mid-cta-text h4 { font-size: 17px; font-weight: 700; color: var(--ink-900); margin-bottom: 4px; }
+    .mid-cta-text p { font-size: 14px; color: var(--ink-500); margin: 0; }
+    .btn-mid { display: inline-block; background: var(--green-500); color: white; font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; white-space: nowrap; }
+    .btn-mid:hover { background: var(--green-600); }
+    .cta-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .cta-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); font-size: 13px; padding: 6px 14px; border-radius: 999px; }
+    /* Floating WA & homepage bar */
+    .float-wa { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: #25D366; color: white; border-radius: 50px; padding: 14px 22px; font-size: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+    .float-wa:hover { background: #128C7E; }
+    .home-bar { background: var(--ink-900); color: white; text-align: center; padding: 12px 24px; font-size: 13px; }
+    .home-bar a { color: var(--green-500); font-weight: 600; text-decoration: none; }
+    .home-bar a:hover { text-decoration: underline; }
+    @media (max-width: 640px) { .img-2col { grid-template-columns: 1fr; } .mid-cta { flex-direction: column; } .float-wa span.label { display: none; } }
     .tip-box { background: var(--green-50); border-left: 4px solid var(--green-500); padding: 20px 24px; border-radius: 0 var(--radius) var(--radius) 0; margin: 32px 0; }
     .tip-box p { margin: 0; color: var(--ink-700); font-size: 15px; }
     .tip-box strong { color: var(--green-600); }
@@ -155,7 +174,10 @@
 
 <div class="article-wrap">
 
-<p>Memilih <strong>supplier seragam perusahaan</strong> yang salah bisa berujung pada kerugian besar — seragam telat datang saat hari orientasi karyawan, kualitas jauh dari ekspektasi, atau vendor menghilang setelah menerima DP. Ini bukan skenario yang jarang terjadi.</p>
+  <img src="../assets/kemeja-tropical-byd.webp" alt="Hasil produksi seragam korporat PT Karmeda" class="article-img" loading="lazy"/>
+  <p class="img-caption">Contoh hasil produksi seragam korporat PT Karmeda — salah satu klien di industri otomotif Tangerang</p>
+
+  <p>Memilih <strong>supplier seragam perusahaan</strong> yang salah bisa berujung pada kerugian besar — seragam telat datang saat hari orientasi karyawan, kualitas jauh dari ekspektasi, atau vendor menghilang setelah menerima DP. Ini bukan skenario yang jarang terjadi.</p>
   <p>Artikel ini membantu Anda menghindari kesalahan tersebut dengan panduan praktis memilih vendor seragam korporat yang benar-benar bisa diandalkan.</p>
 
   <h2>Perbedaan Konveksi, Supplier, dan Reseller Seragam</h2>
@@ -177,6 +199,20 @@
     <li><strong>Komunikasi yang responsif dan transparan.</strong> Uji responsivitas mereka saat proses penawaran — kalau lambat merespons saat belum ada uang masuk, bayangkan saat sudah ada masalah produksi.</li>
     <li><strong>Garansi produk dan kebijakan revisi yang jelas.</strong> Supplier terpercaya memberikan garansi untuk cacat produksi dan bersedia melakukan revisi tanpa biaya tambahan untuk kesalahan di pihak mereka.</li>
   </ol>
+
+  <div class="img-2col">
+    <img src="../assets/garmen1.jpg" alt="Workshop produksi konveksi seragam" loading="lazy"/>
+    <img src="../assets/polo-ofi.webp" alt="Hasil seragam polo shirt korporat" loading="lazy"/>
+  </div>
+  <p class="img-caption">Kiri: fasilitas workshop produksi PT Karmeda. Kanan: contoh seragam polo shirt korporat</p>
+
+  <div class="mid-cta">
+    <div class="mid-cta-text">
+      <h4>Ingin jadikan Karmeda supplier seragam Anda?</h4>
+      <p>Workshop terbuka untuk kunjungan · Sample tersedia · Kontrak tertulis · 20 tahun pengalaman</p>
+    </div>
+    <a href="https://wa.me/628170012500?text=Halo%20Karmeda%2C%20saya%20ingin%20evaluasi%20supplier%20seragam" class="btn-mid">Jadwalkan Kunjungan →</a>
+  </div>
 
   <h2>Red Flag Supplier Seragam yang Harus Dihindari</h2>
   <ul>
@@ -221,7 +257,12 @@
 
   <div class="cta-box">
     <h3>Jadikan Karmeda Supplier Seragam Perusahaan Anda</h3>
-    <p>Workshop terbuka untuk kunjungan langsung. Sample tersedia sebelum produksi. Kontrak tertulis untuk setiap order.</p>
+    <p>Workshop terbuka untuk kunjungan. Sample sebelum produksi. Kontrak tertulis setiap order.</p>
+    <div class="cta-badges">
+      <span class="cta-badge">✓ 20 tahun pengalaman</span>
+      <span class="cta-badge">✓ 200+ klien korporat</span>
+      <span class="cta-badge">✓ Tangerang & seluruh Indonesia</span>
+    </div>
     <a href="https://wa.me/628170012500?text=Halo%20Karmeda%2C%20saya%20ingin%20evaluasi%20sebagai%20supplier%20seragam%20perusahaan%20kami" class="btn-cta">Hubungi & Jadwalkan Kunjungan →</a>
   </div>
 
@@ -245,5 +286,9 @@
   <p>© 2026 <a href="../index.html">PT Karuna Metta Ananda (Karmeda)</a> · Konveksi Seragam Profesional · Tangerang, Indonesia</p>
 </footer>
 
+<a href="https://wa.me/628170012500?text=Halo%20Karmeda%2C%20saya%20tertarik%20dengan%20seragam" class="float-wa" target="_blank" aria-label="Chat WhatsApp">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span class="label">Chat WhatsApp</span>
+</a>
 </body>
 </html>
