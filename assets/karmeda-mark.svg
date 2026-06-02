@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="kg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5FD672"></stop>
+      <stop offset="100%" stop-color="#1F9A38"></stop>
+    </linearGradient>
+  </defs>
+  
+  <path d="M20 80 L40 30 L60 80 Z M40 80 L60 30 L80 80 Z" fill="url(#kg)" fill-rule="evenodd" stroke="url(#kg)" stroke-width="2" stroke-linejoin="round"></path>
+</svg>
