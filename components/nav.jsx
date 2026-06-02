@@ -26,28 +26,36 @@ function Nav({ lang, setLang, t }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // IntersectionObserver — no offsetTop reads, zero forced reflow
   React.useEffect(() => {
     const ids = ['home', 'about', 'products', 'process', 'portfolio', 'calculator', 'blog', 'faq', 'contact'];
-    const onScroll = () => {
-      const y = window.scrollY + 120;
-      let cur = 'home';
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.offsetTop <= y) cur = id;
-      }
-      setActive(cur);
-    };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the topmost intersecting section
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length > 0) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-10% 0px -80% 0px', threshold: 0 }
+    );
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
-  // Auto-scroll shortcut bar to keep active chip visible
+  // Auto-scroll shortcut bar — batched in rAF to avoid forced layout
   React.useEffect(() => {
     if (!shortcutsRef.current) return;
-    const activeBtn = shortcutsRef.current.querySelector('.nav-shortcut-btn.active');
-    if (activeBtn) {
-      activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
+    const rafId = requestAnimationFrame(() => {
+      const activeBtn = shortcutsRef.current?.querySelector('.nav-shortcut-btn.active');
+      if (activeBtn) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    });
+    return () => cancelAnimationFrame(rafId);
   }, [active]);
 
   const links = [

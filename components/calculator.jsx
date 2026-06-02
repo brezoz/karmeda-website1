@@ -926,10 +926,10 @@ function PantDiagram() {
         fill="white" stroke="var(--ink-700)" strokeWidth="1.5" strokeLinejoin="round"/>
       {/* waist */}
       <line x1="70" y1="40" x2="170" y2="40" stroke="var(--green-500)" strokeWidth="1" strokeDasharray="4 3"/>
-      <text x="120" y="25" fontSize="9" fontFamily="JetBrains Mono" fill="var(--green-700)" textAnchor="middle">LINGKAR PINGGANG</text>
+      <text x="120" y="25" fontSize="9" fontFamily="ui-monospace, 'SF Mono', Menlo, monospace" fill="var(--green-700)" textAnchor="middle">LINGKAR PINGGANG</text>
       {/* length */}
       <line x1="55" y1="40" x2="55" y2="290" stroke="var(--green-500)" strokeWidth="1" strokeDasharray="4 3"/>
-      <text x="45" y="170" fontSize="9" fontFamily="JetBrains Mono" fill="var(--green-700)" textAnchor="middle" transform="rotate(-90 45 170)">PANJANG CELANA</text>
+      <text x="45" y="170" fontSize="9" fontFamily="ui-monospace, 'SF Mono', Menlo, monospace" fill="var(--green-700)" textAnchor="middle" transform="rotate(-90 45 170)">PANJANG CELANA</text>
       <circle cx="70" cy="40" r="3" fill="var(--green-500)"/>
       <circle cx="170" cy="40" r="3" fill="var(--green-500)"/>
       <circle cx="65" cy="80" r="3" fill="var(--green-500)"/>
@@ -947,14 +947,14 @@ function BodyDiagram() {
         fill="white" stroke="var(--ink-700)" strokeWidth="1.5" strokeLinejoin="round"/>
       {/* Measurement lines */}
       <line x1="60" y1="120" x2="180" y2="120" stroke="var(--green-500)" strokeWidth="1" strokeDasharray="4 3"/>
-      <text x="125" y="115" fontSize="9" fontFamily="JetBrains Mono" fill="var(--green-700)" textAnchor="middle">LEBAR DADA</text>
+      <text x="125" y="115" fontSize="9" fontFamily="ui-monospace, 'SF Mono', Menlo, monospace" fill="var(--green-700)" textAnchor="middle">LEBAR DADA</text>
       
       {/* Panjang baju: dari kerah (atas) sampai bawah baju */}
       <line x1="30" y1="40" x2="30" y2="240" stroke="var(--green-500)" strokeWidth="1.2" strokeDasharray="4 3"/>
       {/* End caps */}
       <line x1="25" y1="40" x2="35" y2="40" stroke="var(--green-500)" strokeWidth="1.2"/>
       <line x1="25" y1="240" x2="35" y2="240" stroke="var(--green-500)" strokeWidth="1.2"/>
-      <text x="22" y="140" fontSize="9" fontFamily="JetBrains Mono" fill="var(--green-700)" textAnchor="middle" transform="rotate(-90 22 140)">PANJANG BAJU</text>
+      <text x="22" y="140" fontSize="9" fontFamily="ui-monospace, 'SF Mono', Menlo, monospace" fill="var(--green-700)" textAnchor="middle" transform="rotate(-90 22 140)">PANJANG BAJU</text>
       
       <circle cx="60" cy="120" r="3" fill="var(--green-500)"/>
       <circle cx="180" cy="120" r="3" fill="var(--green-500)"/>
