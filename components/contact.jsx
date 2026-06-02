@@ -15,7 +15,7 @@ const contactStyles = {
     borderRadius: 'var(--radius)',
     padding: 24,
     display: 'flex', alignItems: 'center', gap: 16,
-    transition: 'all 0.15s',
+    transition: 'border-color 0.15s, background-color 0.15s',
   },
   iconCircle: {
     width: 48, height: 48, borderRadius: '50%',

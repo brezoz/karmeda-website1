@@ -37,6 +37,29 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
+  <!-- Google Analytics 4 — GANTI G-P2VBRT6ENN dengan Measurement ID kamu -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2VBRT6ENN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2VBRT6ENN', {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+    // Track WhatsApp click as conversion
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest('a[href*="wa.me"]');
+      if (a) {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'conversion',
+          event_label: 'WhatsApp Contact',
+          value: 1
+        });
+      }
+    });
+  </script>
+
   <!-- Enhanced @graph Schema: LocalBusiness + Products -->
   <script type="application/ld+json">
   {

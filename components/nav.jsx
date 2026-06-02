@@ -73,7 +73,7 @@ function Nav({ lang, setLang, t }) {
     <div className={`nav-wrap ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav">
         <a href="#home" className="brand">
-          <img src="assets/logo-karmeda.png" alt="Karmeda" className="nav-logo" style={{ height: 44, width: 44, objectFit: 'contain' }} />
+          <img src="assets/logo-karmeda-small.webp" alt="Karmeda" className="nav-logo" width="44" height="44" style={{ height: 44, width: 44, objectFit: 'contain' }} />
           <div>
             <div className="brand-name" style={{ fontSize: 18, fontWeight: 700, letterSpacing: '-0.01em' }}>PT. KARMEDA</div>
             <div className="brand-sub nav-sub-hide">Karuna Metta Ananda</div>

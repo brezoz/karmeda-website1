@@ -8,7 +8,7 @@ const calcStyles = {
   label: { fontSize: 11, fontFamily: 'var(--font-mono)', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--ink-500)' },
   input: { padding: '12px 14px', border: '1px solid var(--ink-200)', borderRadius: 8, fontSize: 14, background: 'var(--paper)' },
   segGrid: { display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 },
-  segBtn: { padding: '12px', border: '1px solid var(--ink-200)', borderRadius: 8, background: 'white', fontSize: 13, textAlign: 'left', transition: 'all 0.15s' },
+  segBtn: { padding: '12px', border: '1px solid var(--ink-200)', borderRadius: 8, background: 'white', fontSize: 13, textAlign: 'left', transition: 'border-color 0.15s, background-color 0.15s' },
   segActive: { borderColor: 'var(--green-500)', background: 'var(--green-50)', color: 'var(--green-700)' },
   checkbox: { display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', border: '1px solid var(--ink-200)', borderRadius: 8, cursor: 'pointer', fontSize: 13 },
   checkActive: { borderColor: 'var(--green-500)', background: 'var(--green-50)' },
@@ -206,6 +206,8 @@ function Calculator({ t, lang }) {
               <div className="calc-type-scroll" ref={typeScrollRef}>
                 {data.types.map((ty, i) => (
                   <button key={ty.id}
+                    type="button"
+                    aria-pressed={type===ty.id}
                     className={`calc-type-btn${type===ty.id?' active':''}${hint?' tab-hint':''}`}
                     style={{animationDelay: hint ? `${i*90}ms` : '0ms'}}
                     onClick={()=>setType(ty.id)}>
@@ -217,8 +219,10 @@ function Calculator({ t, lang }) {
 
             {/* SLIDER */}
             <div style={calcStyles.row}>
-              <div style={calcStyles.label}>{t('calc_qty')}: <span style={{color:'var(--green-600)', fontWeight:700}}>{qty} pcs</span></div>
-              <input type="range" min="0" max="1000" step="1"
+              <label htmlFor="calc-qty-range" style={calcStyles.label}>{t('calc_qty')}: <span style={{color:'var(--green-600)', fontWeight:700}}>{qty} pcs</span></label>
+              <input id="calc-qty-range" type="range" min="0" max="1000" step="1"
+                aria-label={`Jumlah pesanan: ${qty} pcs`}
+                aria-valuemin={30} aria-valuemax={10000} aria-valuenow={qty}
                 className={hint ? 'slider-hint' : ''}
                 value={Math.round(qtyToPos(qty) * 1000)}
                 onChange={e=>setQty(stepQty(+e.target.value / 1000))}
@@ -234,6 +238,8 @@ function Calculator({ t, lang }) {
               <div style={{display:'flex', gap:8}}>
                 {data.fabrics.map((f, i) => (
                   <button key={f.id}
+                    type="button"
+                    aria-pressed={fabric===f.id}
                     className={hint ? 'tab-hint' : ''}
                     style={{...calcStyles.segBtn, flex:1, textAlign:'center', ...(fabric===f.id?calcStyles.segActive:{}), animationDelay: hint ? `${600+i*90}ms` : '0ms'}}
                     onClick={()=>setFabric(f.id)}>
@@ -254,6 +260,8 @@ function Calculator({ t, lang }) {
                   ['pack', t('calc_extra_pack'), 5],
                 ].map(([k, l, price], idx) => (
                   <button key={k}
+                    type="button"
+                    aria-pressed={extras[k]}
                     className={`calc-chip${extras[k]?' active':''}${hint?' tab-hint':''}`}
                     style={{animationDelay: hint ? `${900+idx*100}ms` : '0ms'}}
                     onClick={()=>setExtras({...extras, [k]:!extras[k]})}>
@@ -843,7 +851,7 @@ function Measurement({ t, lang }) {
               borderRadius: 999, marginBottom: 14,
             }}>
               {[['shirt', tabLabel.shirt], ['pant', tabLabel.pant]].map(([k,l]) => (
-                <button key={k} onClick={() => setGarment(k)} style={{
+                <button key={k} type="button" aria-pressed={garment===k} onClick={() => setGarment(k)} style={{
                   padding: '10px 18px',
                   borderRadius: 999,
                   fontSize: 13,
@@ -1065,7 +1073,7 @@ function PromoBanner({ lang }) {
             letterSpacing: '0.08em',
             color: 'white',
           }}>{code}</div>
-          <button onClick={copy} style={{
+          <button type="button" onClick={copy} aria-label="Salin kode promo" style={{
             padding: '8px 16px',
             borderRadius: 999,
             background: 'white',

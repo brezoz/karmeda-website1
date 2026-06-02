@@ -54,9 +54,9 @@ const aboutStyles = {
 };
 
 const WORKSHOP_PHOTOS = [
-  'assets/garmen1.jpg',
-  'assets/garmen2.jpg',
-  'assets/garment3.jpg',
+  'assets/garmen1-opt.webp',
+  'assets/garmen2-opt.webp',
+  'assets/garment3-opt.webp',
 ];
 
 function WorkshopSlider() {
