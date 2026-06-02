@@ -13,7 +13,7 @@ const aboutStyles = {
   valNum: {
     fontFamily: 'var(--font-mono)',
     fontSize: 11,
-    color: 'var(--green-600)',
+    color: 'var(--ink-700)',
     letterSpacing: '0.1em',
     marginBottom: 12,
   },
@@ -97,26 +97,35 @@ function WorkshopSlider() {
         display: 'flex', justifyContent: 'center', gap: 6,
       }}>
         {WORKSHOP_PHOTOS.map((_, i) => (
-          <button key={i} onClick={() => setCurrent(i)} style={{
-            width: i === current ? 20 : 7,
-            height: 7,
-            borderRadius: 999,
-            background: i === current ? 'white' : 'rgba(255,255,255,0.5)',
-            border: 'none', cursor: 'pointer', padding: 0,
-            transition: 'all 0.3s ease',
-          }} />
+          <button
+            key={i}
+            aria-label={`Lihat foto workshop ${i + 1}`}
+            aria-pressed={i === current}
+            onClick={() => setCurrent(i)}
+            style={{
+              width: i === current ? 20 : 7,
+              height: 7,
+              borderRadius: 999,
+              background: i === current ? 'white' : 'rgba(255,255,255,0.5)',
+              border: 'none', cursor: 'pointer',
+              /* larger tap area via padding without growing visual size */
+              padding: '8px 4px',
+              margin: '-8px -4px',
+              transition: 'all 0.3s ease',
+            }}
+          />
         ))}
       </div>
       {/* Prev / Next arrows */}
-      <button onClick={() => setCurrent(c => (c - 1 + total) % total)} style={{
+      <button aria-label="Foto sebelumnya" onClick={() => setCurrent(c => (c - 1 + total) % total)} style={{
         position: 'absolute', left: 10, top: '50%', transform: 'translateY(-50%)',
         background: 'rgba(255,255,255,0.85)', border: 'none', borderRadius: '50%',
-        width: 32, height: 32, cursor: 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        width: 40, height: 40, cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>‹</button>
-      <button onClick={() => setCurrent(c => (c + 1) % total)} style={{
+      <button aria-label="Foto berikutnya" onClick={() => setCurrent(c => (c + 1) % total)} style={{
         position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)',
         background: 'rgba(255,255,255,0.85)', border: 'none', borderRadius: '50%',
-        width: 32, height: 32, cursor: 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        width: 40, height: 40, cursor: 'pointer', fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>›</button>
     </div>
   );

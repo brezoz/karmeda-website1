@@ -134,13 +134,22 @@ function ProductSlider({ images, style, interval }) {
       {/* dot indicators */}
       <div style={{ position: 'absolute', bottom: 8, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 5, zIndex: 2 }}>
         {images.map((_, i) => (
-          <div key={i} onClick={e => { e.stopPropagation(); setCur(i); }} style={{
-            width: i === cur ? 16 : 6, height: 6,
-            borderRadius: 999,
-            background: i === cur ? 'white' : 'rgba(255,255,255,0.5)',
-            transition: 'all 0.3s',
-            cursor: 'pointer',
-          }} />
+          <button
+            key={i}
+            aria-label={`Foto ${i + 1}`}
+            aria-pressed={i === cur}
+            onClick={e => { e.stopPropagation(); setCur(i); }}
+            style={{
+              width: i === cur ? 16 : 6, height: 6,
+              borderRadius: 999,
+              background: i === cur ? 'white' : 'rgba(255,255,255,0.5)',
+              transition: 'all 0.3s',
+              cursor: 'pointer',
+              border: 'none',
+              padding: '7px 4px',
+              margin: '-7px -4px',
+            }}
+          />
         ))}
       </div>
       {/* counter */}
@@ -264,6 +273,7 @@ function Products({ t, lang }) {
               display: 'inline-flex', alignItems: 'center',
             }}>
               <select
+                aria-label={lang === 'id' ? 'Pilih kategori seragam' : 'Select uniform category'}
                 value=""
                 onChange={(e) => {
                   if (e.target.value) setCat(e.target.value);

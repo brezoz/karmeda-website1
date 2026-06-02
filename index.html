@@ -37,26 +37,34 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <!-- Google Analytics 4 — GANTI G-P2VBRT6ENN dengan Measurement ID kamu -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2VBRT6ENN"></script>
+  <!-- Google Analytics 4 — deferred after page load to avoid unused JS blocking -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-P2VBRT6ENN', {
-      page_title: document.title,
-      page_location: window.location.href,
-    });
     // Track WhatsApp click as conversion
     document.addEventListener('click', function(e) {
       var a = e.target.closest('a[href*="wa.me"]');
-      if (a) {
+      if (a && typeof gtag === 'function') {
         gtag('event', 'whatsapp_click', {
           event_category: 'conversion',
           event_label: 'WhatsApp Contact',
           value: 1
         });
       }
+    });
+    // Load GTM only after page is fully loaded
+    window.addEventListener('load', function() {
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2VBRT6ENN';
+      s.async = true;
+      s.onload = function() {
+        gtag('js', new Date());
+        gtag('config', 'G-P2VBRT6ENN', {
+          page_title: document.title,
+          page_location: window.location.href,
+        });
+      };
+      document.head.appendChild(s);
     });
   </script>
 
