@@ -226,18 +226,10 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://seragamrapih.com/blog/panduan-seragam-karyawan</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://seragamrapih.com/blog/berapa-lama-proses-pembuatan-seragam</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://seragamrapih.com/layanan/seragam-korporat</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://seragamrapih.com/layanan/wearpack-k3</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://seragamrapih.com/layanan/seragam-medis</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://seragamrapih.com/layanan/seragam-pabrik</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://seragamrapih.com/layanan/seragam-fb-hospitality</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
 </urlset>

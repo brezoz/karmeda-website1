@@ -6,30 +6,142 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/lokasi/tangerang",        "destination": "/lokasi/konveksi-seragam-tangerang",          "permanent": true },
-    { "source": "/lokasi/tangerang.html",   "destination": "/lokasi/konveksi-seragam-tangerang",          "permanent": true },
-    { "source": "/lokasi/tangsel",          "destination": "/lokasi/konveksi-seragam-tangerang-selatan",  "permanent": true },
-    { "source": "/lokasi/tangsel.html",     "destination": "/lokasi/konveksi-seragam-tangerang-selatan",  "permanent": true },
-    { "source": "/lokasi/jakarta",          "destination": "/lokasi/konveksi-seragam-jakarta",            "permanent": true },
-    { "source": "/lokasi/jakarta.html",     "destination": "/lokasi/konveksi-seragam-jakarta",            "permanent": true },
-    { "source": "/lokasi/bekasi",           "destination": "/lokasi/konveksi-seragam-bekasi",             "permanent": true },
-    { "source": "/lokasi/bekasi.html",      "destination": "/lokasi/konveksi-seragam-bekasi",             "permanent": true },
-    { "source": "/lokasi/bogor",            "destination": "/lokasi/konveksi-seragam-bogor",              "permanent": true },
-    { "source": "/lokasi/bogor.html",       "destination": "/lokasi/konveksi-seragam-bogor",              "permanent": true },
-    { "source": "/lokasi/depok",            "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true },
-    { "source": "/lokasi/depok.html",       "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true },
-    { "source": "/blog/bikin-seragam-kerja-tangerang.html", "destination": "/blog/bikin-seragam-kerja-tangerang", "permanent": true },
-    { "source": "/seragam-rapih-4/",                       "destination": "/",                                    "permanent": true },
-    { "source": "/seragam-rapih-4",                        "destination": "/",                                    "permanent": true },
-    { "source": "/blog/seragam-pdh-pdl.html",               "destination": "/blog/seragam-pdh-pdl",                "permanent": true },
-    { "source": "/blog/wearpack-baju-kerja-lapangan.html",  "destination": "/blog/wearpack-baju-kerja-lapangan",   "permanent": true },
-    { "source": "/blog/seragam-lapangan-safety.html",       "destination": "/blog/seragam-lapangan-safety",        "permanent": true },
-    { "source": "/blog/supplier-seragam-perusahaan.html",   "destination": "/blog/supplier-seragam-perusahaan",    "permanent": true },
-    { "source": "/blog/seragam-medis-scrub-suit.html",      "destination": "/blog/seragam-medis-scrub-suit",       "permanent": true },
-    { "source": "/blog/kemeja-seragam-kantor.html",         "destination": "/blog/kemeja-seragam-kantor",          "permanent": true }
+    {
+      "source": "/layanan/seragam-korporat.html",
+      "destination": "/layanan/seragam-korporat",
+      "permanent": true
+    },
+    {
+      "source": "/layanan/wearpack-k3.html",
+      "destination": "/layanan/wearpack-k3",
+      "permanent": true
+    },
+    {
+      "source": "/layanan/seragam-medis.html",
+      "destination": "/layanan/seragam-medis",
+      "permanent": true
+    },
+    {
+      "source": "/layanan/seragam-pabrik.html",
+      "destination": "/layanan/seragam-pabrik",
+      "permanent": true
+    },
+    {
+      "source": "/layanan/seragam-fb-hospitality.html",
+      "destination": "/layanan/seragam-fb-hospitality",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/tangerang",
+      "destination": "/lokasi/konveksi-seragam-tangerang",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/tangerang.html",
+      "destination": "/lokasi/konveksi-seragam-tangerang",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/tangsel",
+      "destination": "/lokasi/konveksi-seragam-tangerang-selatan",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/tangsel.html",
+      "destination": "/lokasi/konveksi-seragam-tangerang-selatan",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/jakarta",
+      "destination": "/lokasi/konveksi-seragam-jakarta",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/jakarta.html",
+      "destination": "/lokasi/konveksi-seragam-jakarta",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/bekasi",
+      "destination": "/lokasi/konveksi-seragam-bekasi",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/bekasi.html",
+      "destination": "/lokasi/konveksi-seragam-bekasi",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/bogor",
+      "destination": "/lokasi/konveksi-seragam-bogor",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/bogor.html",
+      "destination": "/lokasi/konveksi-seragam-bogor",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/depok",
+      "destination": "/lokasi/konveksi-seragam-depok",
+      "permanent": true
+    },
+    {
+      "source": "/lokasi/depok.html",
+      "destination": "/lokasi/konveksi-seragam-depok",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bikin-seragam-kerja-tangerang.html",
+      "destination": "/blog/bikin-seragam-kerja-tangerang",
+      "permanent": true
+    },
+    {
+      "source": "/seragam-rapih-4/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/seragam-rapih-4",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seragam-pdh-pdl.html",
+      "destination": "/blog/seragam-pdh-pdl",
+      "permanent": true
+    },
+    {
+      "source": "/blog/wearpack-baju-kerja-lapangan.html",
+      "destination": "/blog/wearpack-baju-kerja-lapangan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seragam-lapangan-safety.html",
+      "destination": "/blog/seragam-lapangan-safety",
+      "permanent": true
+    },
+    {
+      "source": "/blog/supplier-seragam-perusahaan.html",
+      "destination": "/blog/supplier-seragam-perusahaan",
+      "permanent": true
+    },
+    {
+      "source": "/blog/seragam-medis-scrub-suit.html",
+      "destination": "/blog/seragam-medis-scrub-suit",
+      "permanent": true
+    },
+    {
+      "source": "/blog/kemeja-seragam-kantor.html",
+      "destination": "/blog/kemeja-seragam-kantor",
+      "permanent": true
+    }
   ],
   "rewrites": [
-    { "source": "/blog/bikin-seragam-kerja-tangerang", "destination": "/blog/bikin-seragam-kerja-tangerang.html" }
+    {
+      "source": "/blog/bikin-seragam-kerja-tangerang",
+      "destination": "/blog/bikin-seragam-kerja-tangerang.html"
+    }
   ],
   "headers": [
     {
