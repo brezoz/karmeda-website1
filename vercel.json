@@ -20,6 +20,9 @@
     { "source": "/lokasi/depok.html",       "destination": "/lokasi/konveksi-seragam-depok",              "permanent": true },
     { "source": "/blog/bikin-seragam-kerja-tangerang.html", "destination": "/blog/bikin-seragam-kerja-tangerang", "permanent": true }
   ],
+  "rewrites": [
+    { "source": "/blog/bikin-seragam-kerja-tangerang", "destination": "/blog/bikin-seragam-kerja-tangerang.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
