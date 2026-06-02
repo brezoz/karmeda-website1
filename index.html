@@ -339,6 +339,47 @@
   </style>
 </head>
 <body>
+  <!-- Static hero prerender: gives instant LCP before React hydrates.
+       React removes this element on first mount (see app.jsx useEffect). -->
+  <div id="kmd-pre" aria-hidden="true" style="
+    position:fixed;inset:0;z-index:9998;
+    background:#FAFAF8;
+    display:flex;align-items:center;justify-content:center;
+    pointer-events:none;
+    transition:opacity 0.25s ease;
+  ">
+    <img
+      src="assets/hero1.jpeg"
+      alt=""
+      fetchpriority="high"
+      decoding="sync"
+      width="600" height="750"
+      style="
+        position:absolute;right:0;top:0;bottom:0;
+        width:45%;height:100%;
+        object-fit:cover;object-position:center top;
+      "
+    />
+    <div style="
+      position:absolute;left:0;top:0;bottom:0;
+      width:55%;
+      display:flex;flex-direction:column;justify-content:center;
+      padding:0 5% 0 6%;
+    ">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#36B54C;margin-bottom:20px;">Konveksi Seragam B2B · Tangerang</div>
+      <h1 style="font-size:clamp(32px,4vw,56px);line-height:1.08;font-weight:700;color:#0F1411;margin-bottom:24px;">
+        Seragam yang <em style="font-style:italic;color:#36B54C;">membentuk</em><br>identitas.
+      </h1>
+      <p style="font-size:17px;color:#5a6b62;margin-bottom:32px;max-width:38ch;line-height:1.6;">
+        Karmeda mengerjakan seragam korporat, medis, hingga wearpack pabrik dengan presisi konveksi 20 tahun pengalaman.
+      </p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#contact" style="background:#0F1411;color:white;padding:13px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;">Mulai konsultasi →</a>
+        <a href="#products" style="background:transparent;color:#0F1411;padding:13px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600;border:1.5px solid #d8e0da;">Lihat katalog</a>
+      </div>
+    </div>
+  </div>
+
   <div id="root"></div>
 
   <!-- Fallback content for crawlers that don't execute JavaScript -->

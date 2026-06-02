@@ -23,6 +23,15 @@ function App() {
   const [editMode, setEditMode] = React.useState(false);
   const [showTop, setShowTop] = React.useState(false);
 
+  // Remove the static hero prerender overlay as soon as React mounts
+  React.useEffect(() => {
+    const el = document.getElementById('kmd-pre');
+    if (el) {
+      el.style.opacity = '0';
+      setTimeout(() => el.remove(), 260);
+    }
+  }, []);
+
   React.useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
     window.addEventListener('scroll', onScroll, { passive: true });

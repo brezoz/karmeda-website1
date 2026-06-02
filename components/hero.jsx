@@ -1,5 +1,6 @@
 // hero.jsx — 3 hero variants toggleable via Tweaks
 import React from 'react'
+import heroImg from '../assets/hero1.jpeg'
 const heroStyles = {
   // Variant A: Editorial split
   splitWrap: { padding: '60px 0 100px', overflow: 'hidden' },
@@ -61,7 +62,7 @@ function HeroSplit({ t }) {
             </div>
             <HeroStats t={t} />
           </div>
-          <img src="assets/hero1.jpeg" alt="Tim Karmeda" fetchPriority="high" decoding="async" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+          <img src={heroImg} alt="Tim Karmeda" fetchPriority="high" decoding="async" width="600" height="750" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
         </div>
       </div>
     </section>
