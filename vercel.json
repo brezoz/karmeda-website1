@@ -7,6 +7,11 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/iklan/seragam-kerja-pabrik.html",
+      "destination": "/iklan/seragam-kerja-pabrik",
+      "permanent": true
+    },
+    {
       "source": "/layanan/seragam-korporat.html",
       "destination": "/layanan/seragam-korporat",
       "permanent": true
