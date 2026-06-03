@@ -78,15 +78,16 @@ function Contact({ t, lang }) {
                   <div style={{fontSize: 17, fontWeight: 500, marginTop: 2}}>@karmeda_seragam</div>
                 </div>
               </a>
-              <div style={contactStyles.contactCard}>
+              <a href="https://maps.app.goo.gl/db7WNdFNjQKjRYUL9" target="_blank" rel="noopener noreferrer" style={{...contactStyles.contactCard, textDecoration:'none', color:'inherit'}}>
                 <div style={contactStyles.iconCircle}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
                 </div>
                 <div>
-                  <div style={{fontSize: 11, color: 'var(--ink-400)', fontFamily: 'var(--font-mono)', textTransform:'uppercase', letterSpacing:'0.1em'}}>Workshop</div>
+                  <div style={{fontSize: 11, color: 'var(--ink-400)', fontFamily: 'var(--font-mono)', textTransform:'uppercase', letterSpacing:'0.1em'}}>Workshop · Lihat di Maps ↗</div>
                   <div style={{fontSize: 17, fontWeight: 500, marginTop: 2}}>Tangerang, Banten</div>
+                  <div style={{fontSize: 12, color: 'var(--ink-400)', marginTop: 2}}>Jl. Sakura Raya No.38, Babakan</div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -197,6 +198,7 @@ function Footer({ t }) {
               <a href={`https://wa.me/628170012500?text=${encodeURIComponent('Halo pak Marchel - PT. Karmeda saya dapat info dari Web, mau tanya tentang seragam ............')}`}>+62 817-001-2500</a>
               <a href="mailto:marchel.adisastra@gmail.com">Email</a>
               <a href="https://www.instagram.com/karmeda_seragam/">Instagram</a>
+              <a href="https://maps.app.goo.gl/db7WNdFNjQKjRYUL9" target="_blank" rel="noopener noreferrer">📍 Google Maps</a>
               <span>{t('footer_address')}</span>
             </div>
           </div>
