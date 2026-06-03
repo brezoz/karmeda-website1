@@ -37,14 +37,20 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <!-- Google Analytics 4 — deferred after page load to avoid unused JS blocking -->
+  <!-- Google Analytics 4 — async (non-blocking), loads immediately untuk data collection -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2VBRT6ENN"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    // Track WhatsApp click as conversion
+    gtag('js', new Date());
+    gtag('config', 'G-P2VBRT6ENN', {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
+    // Track WhatsApp click sebagai event GA4
     document.addEventListener('click', function(e) {
       var a = e.target.closest('a[href*="wa.me"]');
-      if (a && typeof gtag === 'function') {
+      if (a) {
         gtag('event', 'whatsapp_click', {
           event_category: 'conversion',
           event_label: 'WhatsApp Contact',
@@ -52,25 +58,6 @@
         });
       }
     });
-    // Load GTM only after page is idle — avoids forced reflow on main thread
-    function _loadGTM() {
-      var s = document.createElement('script');
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-P2VBRT6ENN';
-      s.async = true;
-      s.onload = function() {
-        gtag('js', new Date());
-        gtag('config', 'G-P2VBRT6ENN', {
-          page_title: document.title,
-          page_location: window.location.href,
-        });
-      };
-      document.head.appendChild(s);
-    }
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(_loadGTM, { timeout: 4000 });
-    } else {
-      setTimeout(_loadGTM, 3000);
-    }
   </script>
 
   <!-- Enhanced @graph Schema: LocalBusiness + Products -->
