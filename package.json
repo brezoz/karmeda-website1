@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node post-build.js && cp -r assets blog lokasi styles.css favicon.png sitemap.xml dist/ 2>/dev/null; true",
+    "build": "vite build && node post-build.js && cp -r assets blog lokasi layanan iklan styles.css favicon.png sitemap.xml dist/ 2>/dev/null; true",
     "preview": "vite preview"
   },
   "dependencies": {
