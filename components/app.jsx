@@ -24,18 +24,20 @@ const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
 function HomeSeoBlock({ t, lang }) {
   const links = lang === 'en'
     ? [
-        { href: '/layanan/seragam-korporat.html', label: 'Corporate uniform service' },
-        { href: '/layanan/wearpack-k3.html', label: 'Industrial workwear & K3 wearpack' },
-        { href: '/layanan/seragam-medis.html', label: 'Medical scrub uniform service' },
-        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Tangerang service area' },
-        { href: '/blog/cara-memilih-vendor-konveksi-seragam.html', label: 'Guide to choosing a uniform vendor' },
+        { href: '/layanan/seragam-korporat.html', label: 'Corporate uniform vendor Tangerang' },
+        { href: '/layanan/wearpack-k3.html', label: 'Industrial workwear and K3 wearpack' },
+        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Tangerang uniform manufacturing area' },
+        { href: '/komersial/vendor-seragam-perusahaan.html', label: 'Company uniform vendor' },
+        { href: '/komersial/harga-seragam-kantor.html', label: 'Office uniform pricing' },
+        { href: '/blog/cara-memilih-vendor-konveksi-seragam', label: 'Procurement guide for choosing a vendor' },
       ]
     : [
-        { href: '/layanan/seragam-korporat.html', label: 'Layanan seragam korporat' },
-        { href: '/layanan/wearpack-k3.html', label: 'Wearpack K3 & seragam lapangan' },
-        { href: '/layanan/seragam-medis.html', label: 'Layanan seragam medis' },
-        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Area layanan Tangerang' },
-        { href: '/blog/cara-memilih-vendor-konveksi-seragam.html', label: 'Panduan memilih vendor seragam' },
+        { href: '/layanan/seragam-korporat.html', label: 'Vendor seragam korporat Tangerang' },
+        { href: '/layanan/wearpack-k3.html', label: 'Wearpack K3 untuk pabrik dan proyek' },
+        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Konveksi seragam Tangerang' },
+        { href: '/komersial/vendor-seragam-perusahaan.html', label: 'Vendor seragam perusahaan' },
+        { href: '/komersial/harga-seragam-kantor.html', label: 'Harga seragam kantor' },
+        { href: '/blog/cara-memilih-vendor-konveksi-seragam', label: 'Panduan memilih vendor seragam' },
       ];
 
   return (
