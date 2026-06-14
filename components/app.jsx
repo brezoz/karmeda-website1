@@ -162,7 +162,6 @@ function App() {
       <main id="main-content">
         <Hero variant={tweaks.heroVariant} t={t} lang={lang}/>
         <Marquee t={t}/>
-        <HomeSeoBlock t={t} lang={lang}/>
         <React.Suspense fallback={sectionFallback}>
           <About t={t} lang={lang}/>
           <Portfolio t={t} lang={lang}/>
@@ -172,6 +171,7 @@ function App() {
           <Measurement t={t} lang={lang}/>
           <Blog t={t} lang={lang}/>
           <FAQ t={t} lang={lang}/>
+          <HomeSeoBlock t={t} lang={lang}/>
           <Contact t={t} lang={lang}/>
         </React.Suspense>
       </main>
