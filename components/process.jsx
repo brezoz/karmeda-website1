@@ -93,7 +93,7 @@ const portfolioStyles = {
 };
 
 const CLIENTS = [
-{ label: 'Orang Tua Group', logo: 'assets/Logo-Orang-Tua.png' },
+{ label: 'Orang Tua Group', logo: 'assets/Logo-Orang-Tua.webp' },
 { label: 'Astra Group', logo: 'assets/images.png' },
 { label: 'Bank Mandiri', logo: 'assets/bank-mandiri.webp' },
 { label: 'BPJS', logo: 'assets/Logo-Adaro-Andalan-Indonesia-Color.png' },
@@ -103,7 +103,7 @@ const CLIENTS = [
 { label: 'SMA Tarakanita', logo: 'assets/unnamed.png' },
 { label: 'Universitas Pelita', logo: 'assets/olamindonesia_logo.png' },
 { label: 'Telkom', logo: 'assets/images (1).png' },
-{ label: 'Indofood', logo: 'assets/LOGO+FORMULA.png' },
+{ label: 'Indofood', logo: 'assets/LOGO+FORMULA.webp' },
 { label: 'Garuda', logo: 'assets/Logo_Wafer_Tango.png' }];
 
 const CASES = [

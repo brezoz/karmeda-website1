@@ -3,18 +3,89 @@ import React from 'react'
 import I18N from './i18n.jsx'
 import Nav from './nav.jsx'
 import { Hero, Marquee } from './hero.jsx'
-import About from './about.jsx'
-import Products from './products.jsx'
-import { Process, Portfolio } from './process.jsx'
-import { Calculator, Measurement } from './calculator.jsx'
-import { Blog, FAQ } from './blog_faq.jsx'
-import { Contact, Footer } from './contact.jsx'
+
+const About = React.lazy(() => import('./about.jsx'));
+const Products = React.lazy(() => import('./products.jsx'));
+const Portfolio = React.lazy(() => import('./process.jsx').then((m) => ({ default: m.Portfolio })));
+const Process = React.lazy(() => import('./process.jsx').then((m) => ({ default: m.Process })));
+const Calculator = React.lazy(() => import('./calculator.jsx').then((m) => ({ default: m.Calculator })));
+const Measurement = React.lazy(() => import('./calculator.jsx').then((m) => ({ default: m.Measurement })));
+const Blog = React.lazy(() => import('./blog_faq.jsx').then((m) => ({ default: m.Blog })));
+const FAQ = React.lazy(() => import('./blog_faq.jsx').then((m) => ({ default: m.FAQ })));
+const Contact = React.lazy(() => import('./contact.jsx').then((m) => ({ default: m.Contact })));
+const Footer = React.lazy(() => import('./contact.jsx').then((m) => ({ default: m.Footer })));
+
 const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
   "heroVariant": "split",
   "primaryColor": "#36B54C",
   "accent": "warm",
   "darkMode": false
 }/*EDITMODE-END*/;
+
+function HomeSeoBlock({ t, lang }) {
+  const links = lang === 'en'
+    ? [
+        { href: '/layanan/seragam-korporat.html', label: 'Corporate uniform vendor Tangerang' },
+        { href: '/layanan/wearpack-k3.html', label: 'Industrial workwear and K3 wearpack' },
+        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Tangerang uniform manufacturing area' },
+        { href: '/komersial/vendor-seragam-perusahaan.html', label: 'Company uniform vendor' },
+        { href: '/komersial/harga-seragam-kantor.html', label: 'Office uniform pricing' },
+        { href: '/blog/cara-memilih-vendor-konveksi-seragam', label: 'Procurement guide for choosing a vendor' },
+      ]
+    : [
+        { href: '/layanan/seragam-korporat.html', label: 'Vendor seragam korporat Tangerang' },
+        { href: '/layanan/wearpack-k3.html', label: 'Wearpack K3 untuk pabrik dan proyek' },
+        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Konveksi seragam Tangerang' },
+        { href: '/komersial/vendor-seragam-perusahaan.html', label: 'Vendor seragam perusahaan' },
+        { href: '/komersial/harga-seragam-kantor.html', label: 'Harga seragam kantor' },
+        { href: '/blog/cara-memilih-vendor-konveksi-seragam', label: 'Panduan memilih vendor seragam' },
+      ];
+
+  return (
+    <section aria-labelledby="homepage-seo-block" style={{ padding: '32px 0 12px' }}>
+      <div className="container">
+        <div style={{
+          border: '1px solid var(--ink-200)',
+          borderRadius: 'var(--radius-lg)',
+          background: 'linear-gradient(180deg, rgba(54,181,76,0.06) 0%, rgba(255,255,255,0.98) 100%)',
+          padding: '32px'
+        }}>
+          <div className="eyebrow">{lang === 'en' ? 'Homepage SEO focus' : 'Penguatan SEO homepage'}</div>
+          <h2 id="homepage-seo-block" style={{ marginTop: 16, marginBottom: 16, fontSize: 'clamp(28px, 4vw, 44px)', lineHeight: 1.05 }}>
+            {t('seo_block_title')}
+          </h2>
+          <p style={{ color: 'var(--ink-700)', maxWidth: 980 }}>{t('seo_block_p1')}</p>
+          <p style={{ color: 'var(--ink-700)', maxWidth: 980, marginTop: 16 }}>{t('seo_block_p2')}</p>
+          <ul style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: '24px 0 0',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: 12
+          }}>
+            {links.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} style={{
+                  display: 'block',
+                  padding: '14px 16px',
+                  borderRadius: 'var(--radius)',
+                  border: '1px solid var(--ink-200)',
+                  background: 'white',
+                  color: 'var(--ink-900)',
+                  textDecoration: 'none',
+                  fontWeight: 600
+                }}>
+                  {link.label} <span aria-hidden="true">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function App() {
   const [lang, setLang] = React.useState(() => localStorage.getItem('km_lang') || 'id');
@@ -84,23 +155,30 @@ function App() {
     window.parent.postMessage({type: '__edit_mode_set_keys', edits: {[key]: val}}, '*');
   };
 
+  const sectionFallback = <div style={{ minHeight: 120 }} aria-hidden="true" />;
+
   return (
     <>
       <Nav lang={lang} setLang={setLang} t={t}/>
       <main id="main-content">
         <Hero variant={tweaks.heroVariant} t={t} lang={lang}/>
         <Marquee t={t}/>
-        <About t={t}/>
-        <Portfolio t={t} lang={lang}/>
-        <Products t={t} lang={lang}/>
-        <Process t={t}/>
-        <Calculator t={t} lang={lang}/>
-        <Measurement t={t} lang={lang}/>
-        <Blog t={t} lang={lang}/>
-        <FAQ t={t} lang={lang}/>
-        <Contact t={t} lang={lang}/>
+        <React.Suspense fallback={sectionFallback}>
+          <About t={t} lang={lang}/>
+          <Portfolio t={t} lang={lang}/>
+          <Products t={t} lang={lang}/>
+          <Process t={t}/>
+          <Calculator t={t} lang={lang}/>
+          <Measurement t={t} lang={lang}/>
+          <Blog t={t} lang={lang}/>
+          <FAQ t={t} lang={lang}/>
+          <HomeSeoBlock t={t} lang={lang}/>
+          <Contact t={t} lang={lang}/>
+        </React.Suspense>
       </main>
-      <Footer t={t}/>
+      <React.Suspense fallback={null}>
+        <Footer t={t}/>
+      </React.Suspense>
 
       {/* Scroll to top */}
       <button
