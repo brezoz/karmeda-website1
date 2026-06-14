@@ -89,7 +89,7 @@ function HeroSplit({ t, lang }) {
             <HeroTrust lang={lang} />
             <HeroStats t={t} />
           </div>
-          <img src={heroImg} alt="Tim Karmeda" fetchPriority="high" decoding="async" width="600" height="750" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
+          <img src={heroImg} alt={lang === 'en' ? 'Tangerang uniform manufacturing team at PT Karmeda' : 'Tim produksi konveksi seragam Tangerang PT Karmeda'} fetchPriority="high" decoding="async" width="600" height="750" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
         </div>
       </div>
     </section>

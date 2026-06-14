@@ -59,6 +59,37 @@ const WORKSHOP_PHOTOS = [
   'assets/garment3-opt.webp',
 ];
 
+const SEO_LINKS = {
+  id: {
+    services: [
+      { href: 'layanan/seragam-korporat.html', label: 'Seragam korporat' },
+      { href: 'layanan/seragam-pabrik.html', label: 'Seragam pabrik & lapangan' },
+      { href: 'layanan/seragam-medis.html', label: 'Seragam medis' },
+      { href: 'layanan/wearpack-k3.html', label: 'Wearpack K3' },
+    ],
+    locations: [
+      { href: 'lokasi/konveksi-seragam-tangerang.html', label: 'Konveksi seragam Tangerang' },
+      { href: 'lokasi/konveksi-seragam-tangerang-selatan.html', label: 'Konveksi seragam Tangerang Selatan' },
+      { href: 'lokasi/konveksi-seragam-jakarta.html', label: 'Konveksi seragam Jakarta' },
+      { href: 'lokasi/konveksi-seragam-bekasi.html', label: 'Konveksi seragam Bekasi' },
+    ]
+  },
+  en: {
+    services: [
+      { href: 'layanan/seragam-korporat.html', label: 'Corporate uniforms' },
+      { href: 'layanan/seragam-pabrik.html', label: 'Industrial workwear' },
+      { href: 'layanan/seragam-medis.html', label: 'Medical uniforms' },
+      { href: 'layanan/wearpack-k3.html', label: 'Safety coveralls' },
+    ],
+    locations: [
+      { href: 'lokasi/konveksi-seragam-tangerang.html', label: 'Tangerang uniform manufacturing' },
+      { href: 'lokasi/konveksi-seragam-tangerang-selatan.html', label: 'South Tangerang uniforms' },
+      { href: 'lokasi/konveksi-seragam-jakarta.html', label: 'Jakarta uniforms' },
+      { href: 'lokasi/konveksi-seragam-bekasi.html', label: 'Bekasi uniforms' },
+    ]
+  }
+};
+
 function WorkshopSlider() {
   const [current, setCurrent] = React.useState(0);
   const total = WORKSHOP_PHOTOS.length;
@@ -131,13 +162,14 @@ function WorkshopSlider() {
   );
 }
 
-function About({ t }) {
+function About({ t, lang = 'id' }) {
   const values = [
     { n: '01', t: t('about_value_1_t'), d: t('about_value_1_d') },
     { n: '02', t: t('about_value_2_t'), d: t('about_value_2_d') },
     { n: '03', t: t('about_value_3_t'), d: t('about_value_3_d') },
     { n: '04', t: t('about_value_4_t'), d: t('about_value_4_d') },
   ];
+  const linkSet = SEO_LINKS[lang] || SEO_LINKS.id;
 
   return (
     <section id="about" style={aboutStyles.wrap}>
@@ -158,6 +190,29 @@ function About({ t }) {
             <h2 className="h-1" style={{marginTop: 20, marginBottom: 28, fontFamily: 'system-ui'}}>{t('about_title')}</h2>
             <p style={{marginBottom: 20, color: 'var(--ink-700)', fontSize: 16}}>{t('about_p1')}</p>
             <p style={{color: 'var(--ink-700)', fontSize: 16}}>{t('about_p2')}</p>
+            <div style={{marginTop: 28, padding: 24, background: 'white', borderRadius: 'var(--radius)', border: '1px solid var(--ink-200)'}}>
+              <h3 style={{fontFamily: 'var(--font-display)', fontSize: 24, marginBottom: 12}}>{t('seo_block_title')}</h3>
+              <p style={{marginBottom: 12, color: 'var(--ink-700)', fontSize: 15}}>{t('seo_block_p1')}</p>
+              <p style={{color: 'var(--ink-700)', fontSize: 15}}>{t('seo_block_p2')}</p>
+              <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:16, marginTop:20}}>
+                <div>
+                  <div style={{fontSize:11, fontFamily:'var(--font-mono)', textTransform:'uppercase', letterSpacing:'0.1em', color:'var(--ink-500)', marginBottom:10}}>{lang === 'en' ? 'Main services' : 'Layanan utama'}</div>
+                  <div style={{display:'flex', flexWrap:'wrap', gap:8}}>
+                    {linkSet.services.map((item) => (
+                      <a key={item.href} href={item.href} style={{padding:'8px 12px', border:'1px solid var(--ink-200)', borderRadius:999, fontSize:13, textDecoration:'none', color:'var(--ink-800)', background:'var(--paper-2)'}}>{item.label}</a>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div style={{fontSize:11, fontFamily:'var(--font-mono)', textTransform:'uppercase', letterSpacing:'0.1em', color:'var(--ink-500)', marginBottom:10}}>{lang === 'en' ? 'Location pages' : 'Halaman lokasi'}</div>
+                  <div style={{display:'flex', flexWrap:'wrap', gap:8}}>
+                    {linkSet.locations.map((item) => (
+                      <a key={item.href} href={item.href} style={{padding:'8px 12px', border:'1px solid var(--ink-200)', borderRadius:999, fontSize:13, textDecoration:'none', color:'var(--ink-800)', background:'var(--paper-2)'}}>{item.label}</a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
             <div style={aboutStyles.values}>
               {values.map(v => (
                 <div key={v.n} style={aboutStyles.valCard}>

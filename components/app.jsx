@@ -21,6 +21,69 @@ const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
   "darkMode": false
 }/*EDITMODE-END*/;
 
+function HomeSeoBlock({ t, lang }) {
+  const links = lang === 'en'
+    ? [
+        { href: '/layanan/seragam-korporat.html', label: 'Corporate uniform service' },
+        { href: '/layanan/wearpack-k3.html', label: 'Industrial workwear & K3 wearpack' },
+        { href: '/layanan/seragam-medis.html', label: 'Medical scrub uniform service' },
+        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Tangerang service area' },
+        { href: '/blog/cara-memilih-vendor-konveksi-seragam.html', label: 'Guide to choosing a uniform vendor' },
+      ]
+    : [
+        { href: '/layanan/seragam-korporat.html', label: 'Layanan seragam korporat' },
+        { href: '/layanan/wearpack-k3.html', label: 'Wearpack K3 & seragam lapangan' },
+        { href: '/layanan/seragam-medis.html', label: 'Layanan seragam medis' },
+        { href: '/lokasi/konveksi-seragam-tangerang.html', label: 'Area layanan Tangerang' },
+        { href: '/blog/cara-memilih-vendor-konveksi-seragam.html', label: 'Panduan memilih vendor seragam' },
+      ];
+
+  return (
+    <section aria-labelledby="homepage-seo-block" style={{ padding: '32px 0 12px' }}>
+      <div className="container">
+        <div style={{
+          border: '1px solid var(--ink-200)',
+          borderRadius: 'var(--radius-lg)',
+          background: 'linear-gradient(180deg, rgba(54,181,76,0.06) 0%, rgba(255,255,255,0.98) 100%)',
+          padding: '32px'
+        }}>
+          <div className="eyebrow">{lang === 'en' ? 'Homepage SEO focus' : 'Penguatan SEO homepage'}</div>
+          <h2 id="homepage-seo-block" style={{ marginTop: 16, marginBottom: 16, fontSize: 'clamp(28px, 4vw, 44px)', lineHeight: 1.05 }}>
+            {t('seo_block_title')}
+          </h2>
+          <p style={{ color: 'var(--ink-700)', maxWidth: 980 }}>{t('seo_block_p1')}</p>
+          <p style={{ color: 'var(--ink-700)', maxWidth: 980, marginTop: 16 }}>{t('seo_block_p2')}</p>
+          <ul style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: '24px 0 0',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+            gap: 12
+          }}>
+            {links.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} style={{
+                  display: 'block',
+                  padding: '14px 16px',
+                  borderRadius: 'var(--radius)',
+                  border: '1px solid var(--ink-200)',
+                  background: 'white',
+                  color: 'var(--ink-900)',
+                  textDecoration: 'none',
+                  fontWeight: 600
+                }}>
+                  {link.label} <span aria-hidden="true">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [lang, setLang] = React.useState(() => localStorage.getItem('km_lang') || 'id');
   const [tweaks, setTweaks] = React.useState(TWEAK_DEFAULS);
@@ -97,8 +160,9 @@ function App() {
       <main id="main-content">
         <Hero variant={tweaks.heroVariant} t={t} lang={lang}/>
         <Marquee t={t}/>
+        <HomeSeoBlock t={t} lang={lang}/>
         <React.Suspense fallback={sectionFallback}>
-          <About t={t}/>
+          <About t={t} lang={lang}/>
           <Portfolio t={t} lang={lang}/>
           <Products t={t} lang={lang}/>
           <Process t={t}/>

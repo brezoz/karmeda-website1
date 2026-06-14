@@ -64,20 +64,20 @@ function Blog({ t, lang }) {
 
 // FAQ
 const FAQ_ID = [
-  { q: 'Berapa minimum order quantity (MOQ)?', a: 'MOQ kami fleksibel: mulai 30 pcs untuk wearpack/scrub, 50 pcs untuk PDH/PDL, dan 100 pcs untuk polo shirt. Untuk volume di bawah MOQ, kami tetap bisa diskusikan dengan harga menyesuaikan.' },
-  { q: 'Berapa lama waktu produksi?', a: 'Standar produksi 14–21 hari kerja setelah approval sample, untuk volume hingga 500 pcs. Volume lebih besar atau urgent kami sediakan jadwal khusus.' },
-  { q: 'Apakah bisa kirim sample dulu?', a: 'Ya. Kami sediakan sample fisik gratis untuk MOQ minimum atau sample berbayar dengan deduksi dari PO final.' },
-  { q: 'Apakah menerima desain custom?', a: 'Tentu. Tim desain kami akan membuat mockup berdasarkan brief Anda — termasuk konsultasi pemilihan kain dan finishing.' },
-  { q: 'Bagaimana sistem pembayaran?', a: 'DP 50% di awal produksi, pelunasan 50% sebelum pengiriman. Untuk klien korporat, kami menyediakan opsi termin pembayaran sesuai kontrak.' },
-  { q: 'Apakah bisa kirim ke luar Jabodetabek?', a: 'Ya, kami melayani pengiriman ke seluruh Indonesia via ekspedisi kepercayaan kami atau ekspedisi pilihan klien.' },
+  { q: 'Apakah PT Karmeda melayani konveksi seragam perusahaan di Tangerang?', a: 'Ya. Kami fokus pada proyek B2B untuk perusahaan, pabrik, rumah sakit, sekolah, dan instansi di Tangerang serta area Jabodetabek.' },
+  { q: 'Berapa minimum order quantity (MOQ) seragam?', a: 'MOQ kami fleksibel: mulai 30 pcs untuk wearpack/scrub, 50 pcs untuk PDH/PDL, dan 100 pcs untuk polo shirt. Untuk volume di bawah MOQ, kami tetap bisa diskusikan dengan harga menyesuaikan.' },
+  { q: 'Berapa lama waktu produksi seragam perusahaan?', a: 'Standar produksi 14–21 hari kerja setelah approval sample, untuk volume hingga 500 pcs. Volume lebih besar atau urgent kami sediakan jadwal khusus sesuai kapasitas produksi.' },
+  { q: 'Apakah bisa buat sample atau mockup dulu sebelum produksi massal?', a: 'Ya. Kami sediakan sample fisik atau sample berbayar yang bisa dideduksi dari PO final, plus mockup desain untuk approval internal tim Anda.' },
+  { q: 'Jenis seragam apa saja yang bisa diproduksi?', a: 'Kami mengerjakan seragam kantor, PDH/PDL, polo shirt, wearpack K3, scrub suit medis, seragam outsourcing, seragam sekolah, dan seragam custom dengan bordir atau sablon logo perusahaan.' },
+  { q: 'Apakah bisa kirim ke luar Tangerang dan Jabodetabek?', a: 'Bisa. Kami melayani pengiriman ke seluruh Indonesia via ekspedisi rekanan atau ekspedisi pilihan klien.' },
 ];
 const FAQ_EN = [
+  { q: 'Does PT Karmeda handle company-uniform manufacturing in Tangerang?', a: 'Yes. We focus on B2B uniform production for companies, factories, hospitals, schools, and institutions in Tangerang and the wider Jakarta metro area.' },
   { q: 'What is the minimum order quantity (MOQ)?', a: 'Our MOQ is flexible: from 30 pcs for coveralls/scrubs, 50 pcs for office shirts, and 100 pcs for polos. We can discuss smaller volumes with adjusted pricing.' },
-  { q: 'How long does production take?', a: 'Standard production is 14–21 working days after sample approval, for volumes up to 500 pcs. Larger or urgent volumes get a special schedule.' },
-  { q: 'Can you send samples first?', a: 'Yes. We provide free physical samples for minimum MOQ or paid samples with deduction from final PO.' },
-  { q: 'Do you accept custom designs?', a: 'Of course. Our design team will create mockups based on your brief — including fabric and finishing consultation.' },
-  { q: 'What is the payment scheme?', a: '50% DP at production start, 50% before delivery. For corporate clients we offer payment terms per contract.' },
-  { q: 'Do you ship outside Jabodetabek?', a: 'Yes, we ship across Indonesia via our trusted couriers or your preferred carrier.' },
+  { q: 'How long does production take?', a: 'Standard production is 14–21 working days after sample approval for volumes up to 500 pcs. Larger or urgent volumes get a special schedule.' },
+  { q: 'Can you prepare samples or mockups before mass production?', a: 'Yes. We can provide physical samples or paid samples deducted from the final PO, plus design mockups for your internal approval.' },
+  { q: 'What types of uniforms can you produce?', a: 'We produce office uniforms, PDH/PDL shirts, polos, industrial workwear, medical scrubs, outsourcing uniforms, school uniforms, and custom uniforms with embroidery or logo printing.' },
+  { q: 'Do you ship outside Tangerang and Jabodetabek?', a: 'Yes, we ship across Indonesia via our trusted couriers or your preferred carrier.' },
 ];
 
 function FAQ({ t, lang }) {
