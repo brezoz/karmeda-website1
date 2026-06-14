@@ -3,12 +3,17 @@ import React from 'react'
 import I18N from './i18n.jsx'
 import Nav from './nav.jsx'
 import { Hero, Marquee } from './hero.jsx'
-import About from './about.jsx'
-import Products from './products.jsx'
-import { Process, Portfolio } from './process.jsx'
-import { Calculator, Measurement } from './calculator.jsx'
-import { Blog, FAQ } from './blog_faq.jsx'
-import { Contact, Footer } from './contact.jsx'
+
+const About = React.lazy(() => import('./about.jsx'));
+const Products = React.lazy(() => import('./products.jsx'));
+const Portfolio = React.lazy(() => import('./process.jsx').then((m) => ({ default: m.Portfolio })));
+const Process = React.lazy(() => import('./process.jsx').then((m) => ({ default: m.Process })));
+const Calculator = React.lazy(() => import('./calculator.jsx').then((m) => ({ default: m.Calculator })));
+const Measurement = React.lazy(() => import('./calculator.jsx').then((m) => ({ default: m.Measurement })));
+const Blog = React.lazy(() => import('./blog_faq.jsx').then((m) => ({ default: m.Blog })));
+const FAQ = React.lazy(() => import('./blog_faq.jsx').then((m) => ({ default: m.FAQ })));
+const Contact = React.lazy(() => import('./contact.jsx').then((m) => ({ default: m.Contact })));
+const Footer = React.lazy(() => import('./contact.jsx').then((m) => ({ default: m.Footer })));
 const TWEAK_DEFAULS = /*EDITMODE-BEGIN*/{
   "heroVariant": "split",
   "primaryColor": "#36B54C",
@@ -84,23 +89,29 @@ function App() {
     window.parent.postMessage({type: '__edit_mode_set_keys', edits: {[key]: val}}, '*');
   };
 
+  const sectionFallback = <div style={{ minHeight: 120 }} aria-hidden="true" />;
+
   return (
     <>
       <Nav lang={lang} setLang={setLang} t={t}/>
       <main id="main-content">
         <Hero variant={tweaks.heroVariant} t={t} lang={lang}/>
         <Marquee t={t}/>
-        <About t={t}/>
-        <Portfolio t={t} lang={lang}/>
-        <Products t={t} lang={lang}/>
-        <Process t={t}/>
-        <Calculator t={t} lang={lang}/>
-        <Measurement t={t} lang={lang}/>
-        <Blog t={t} lang={lang}/>
-        <FAQ t={t} lang={lang}/>
-        <Contact t={t} lang={lang}/>
+        <React.Suspense fallback={sectionFallback}>
+          <About t={t}/>
+          <Portfolio t={t} lang={lang}/>
+          <Products t={t} lang={lang}/>
+          <Process t={t}/>
+          <Calculator t={t} lang={lang}/>
+          <Measurement t={t} lang={lang}/>
+          <Blog t={t} lang={lang}/>
+          <FAQ t={t} lang={lang}/>
+          <Contact t={t} lang={lang}/>
+        </React.Suspense>
       </main>
-      <Footer t={t}/>
+      <React.Suspense fallback={null}>
+        <Footer t={t}/>
+      </React.Suspense>
 
       {/* Scroll to top */}
       <button

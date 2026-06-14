@@ -83,7 +83,7 @@ function WorkshopSlider() {
     <div style={{ position: 'relative', borderRadius: 'var(--radius-lg)', overflow: 'hidden', aspectRatio: '4/5' }}
       onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       {WORKSHOP_PHOTOS.map((src, i) => (
-        <img key={i} src={src} alt={`Workshop ${i+1}`} style={{
+        <img key={i} src={src} alt={`Workshop ${i+1}`} loading={i === 0 ? 'eager' : 'lazy'} decoding="async" style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%',
           objectFit: 'cover',

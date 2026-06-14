@@ -51,8 +51,28 @@ function Contact({ t, lang }) {
             <p style={{color:'var(--ink-300)', marginBottom: 40, fontSize: 17}}>{t('rfq_sub')}</p>
             
             <div style={{display:'flex', flexDirection:'column', gap: 12}}>
+              <div style={{display:'flex', flexWrap:'wrap', gap: 8, marginBottom: 8}}>
+                {[
+                  ['PDH / PDL', lang === 'en' ? 'Office shirt / field uniform' : 'Seragam kantor / lapangan'],
+                  ['Polo Shirt', lang === 'en' ? 'Polo uniform' : 'Polo seragam'],
+                  ['Wearpack', lang === 'en' ? 'Industrial coverall' : 'Wearpack industri'],
+                  ['Medis', lang === 'en' ? 'Medical uniform' : 'Seragam medis'],
+                ].map(([label, hint]) => (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={() => setForm({ ...form, type: label, message: form.message || hint })}
+                    style={{border:'1px solid #2A3230', background:'#111612', color:'white', borderRadius:999, padding:'8px 12px', fontSize:12, cursor:'pointer'}}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <div style={{fontSize: 12, color: 'var(--ink-400)', marginBottom: 8}}>
+                {lang === 'en' ? 'Fastest response via WhatsApp. Use the form if you already know quantity, deadline, or product type.' : 'Respon tercepat via WhatsApp. Pakai form kalau sudah tahu qty, deadline, atau jenis seragam.'}
+              </div>
               <a href={`https://wa.me/628170012500?text=${encodeURIComponent('Halo pak Marchel - PT. Karmeda saya dapat info dari Web, mau tanya tentang seragam ............')}`} target="_blank" rel="noreferrer" style={contactStyles.contactCard}>
-                <div style={{...contactStyles.iconCircle, background: '#25D366'}}>
+<div style={{...contactStyles.iconCircle, background: '#25D366'}}>
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.7.4-.3.3-1 .9-1 2.3 0 1.4 1 2.7 1.2 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.7.5 3.4 1.3 4.8L2 22l5.3-1.4c1.4.8 3 1.2 4.7 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.2.8.9-3.1-.2-.3C4.4 14.7 4 13.4 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z"/></svg>
                 </div>
                 <div>
@@ -139,7 +159,7 @@ function Contact({ t, lang }) {
               <textarea id="rfq-message" rows="4" style={{...contactStyles.input, resize: 'vertical'}} value={form.message} onChange={e=>setForm({...form, message:e.target.value})}/>
             </div>
             <button type="submit" className="btn btn-green" style={{width:'100%', justifyContent:'center', marginTop: 8}}>
-              {sent ? '✓ Mengarahkan ke WhatsApp...' : t('rfq_send')} →
+              {sent ? '✓ Mengarahkan ke WhatsApp...' : (lang === 'en' ? 'Send RFQ to WhatsApp' : 'Kirim RFQ ke WhatsApp')} →
             </button>
           </form>
         </div>

@@ -1,6 +1,11 @@
 // hero.jsx — 3 hero variants toggleable via Tweaks
 import React from 'react'
 import heroImg from '../assets/hero1.webp'
+const WA_PREFILL = {
+  id: 'Halo PT Karmeda, saya mau konsultasi kebutuhan seragam untuk perusahaan kami.',
+  en: 'Hello PT Karmeda, I want to discuss uniform requirements for our company.'
+};
+
 const heroStyles = {
   // Variant A: Editorial split
   splitWrap: { padding: '60px 0 100px', overflow: 'hidden' },
@@ -35,13 +40,34 @@ const heroStyles = {
   catTile: { aspectRatio: '3/4', borderRadius: 'var(--radius)' },
 };
 
-function Hero({ variant, t, lang }) {
-  if (variant === 'split') return <HeroSplit t={t} />;
-  if (variant === 'full') return <HeroFull t={t} />;
-  return <HeroCatalog t={t} />;
+function heroWaHref(lang) {
+  const text = lang === 'en' ? WA_PREFILL.en : WA_PREFILL.id;
+  return `https://wa.me/628170012500?text=${encodeURIComponent(text)}`;
 }
 
-function HeroSplit({ t }) {
+function HeroTrust({ lang }) {
+  const items = lang === 'en'
+    ? ['MOQ starts from 30 pcs', 'Sample and material consultation available', 'Lead time target 14–21 working days']
+    : ['MOQ mulai 30 pcs', 'Bisa sample & konsultasi bahan', 'Target lead time 14–21 hari kerja'];
+
+  return (
+    <ul style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 20, padding: 0, listStyle: 'none' }}>
+      {items.map((item) => (
+        <li key={item} style={{ fontSize: 12, color: 'var(--ink-600)', border: '1px solid var(--ink-200)', borderRadius: 999, padding: '8px 12px', background: 'white' }}>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Hero({ variant, t, lang }) {
+  if (variant === 'split') return <HeroSplit t={t} lang={lang} />;
+  if (variant === 'full') return <HeroFull t={t} lang={lang} />;
+  return <HeroCatalog t={t} lang={lang} />;
+}
+
+function HeroSplit({ t, lang }) {
   return (
     <section id="home" style={heroStyles.splitWrap}>
       <div className="container">
@@ -54,12 +80,13 @@ function HeroSplit({ t }) {
             </h1>
             <p className="lead" style={heroStyles.splitSub}>{t('hero_sub')}</p>
             <div style={heroStyles.splitCtaRow}>
-              <a href="#contact" className="btn btn-primary">
-                {t('hero_cta_primary')}
+              <a href={heroWaHref(lang)} target="_blank" rel="noreferrer" className="btn btn-primary">
+                {lang === 'en' ? 'Chat on WhatsApp' : 'Chat WhatsApp'}
                 <span className="btn-arrow">→</span>
               </a>
-              <a href="#products" className="btn btn-ghost">{t('hero_cta_secondary')}</a>
+              <a href="#contact" className="btn btn-ghost">{lang === 'en' ? 'Request a quote' : 'Minta penawaran'}</a>
             </div>
+            <HeroTrust lang={lang} />
             <HeroStats t={t} />
           </div>
           <img src={heroImg} alt="Tim Karmeda" fetchPriority="high" decoding="async" width="600" height="750" style={{ ...heroStyles.splitMedia, width: '100%', maxWidth: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
@@ -69,7 +96,7 @@ function HeroSplit({ t }) {
   );
 }
 
-function HeroFull({ t }) {
+function HeroFull({ t, lang }) {
   return (
     <section id="home" style={heroStyles.fullWrap}>
       <div style={heroStyles.fullStage}>
@@ -86,11 +113,11 @@ function HeroFull({ t }) {
           </h1>
           <p className="lead" style={heroStyles.fullSub}>{t('hero_sub')}</p>
           <div style={heroStyles.splitCtaRow}>
-            <a href="#contact" className="btn btn-green">
-              {t('hero_cta_primary')}
+            <a href={heroWaHref(lang)} target="_blank" rel="noreferrer" className="btn btn-green">
+              {lang === 'en' ? 'Chat on WhatsApp' : 'Chat WhatsApp'}
               <span className="btn-arrow" style={{background:'rgba(255,255,255,0.2)'}}>→</span>
             </a>
-            <a href="#products" className="btn btn-ghost on-dark">{t('hero_cta_secondary')}</a>
+            <a href="#contact" className="btn btn-ghost on-dark">{lang === 'en' ? 'Request a quote' : 'Minta penawaran'}</a>
           </div>
         </div>
       </div>
@@ -103,7 +130,7 @@ function HeroFull({ t }) {
   );
 }
 
-function HeroCatalog({ t }) {
+function HeroCatalog({ t, lang }) {
   return (
     <section id="home" style={heroStyles.catWrap}>
       <div className="container">
@@ -117,10 +144,11 @@ function HeroCatalog({ t }) {
           <div style={{maxWidth: 360}}>
             <p style={{color:'var(--ink-700)', marginBottom: 24}}>{t('hero_sub')}</p>
             <div style={heroStyles.splitCtaRow}>
-              <a href="#contact" className="btn btn-primary">
-                {t('hero_cta_primary')}
+              <a href={heroWaHref(lang)} target="_blank" rel="noreferrer" className="btn btn-primary">
+                {lang === 'en' ? 'Chat on WhatsApp' : 'Chat WhatsApp'}
                 <span className="btn-arrow">→</span>
               </a>
+              <a href="#contact" className="btn btn-ghost">{lang === 'en' ? 'Request a quote' : 'Minta penawaran'}</a>
             </div>
           </div>
         </div>
